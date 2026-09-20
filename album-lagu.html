@@ -5,6 +5,191 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Album Lagu - Joel Kids Ministry</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #005669;
+      background-image: linear-gradient(rgba(0, 86, 105, 0.45), rgba(0, 103, 126, 0.45)), url('asset/background/ocean_background.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    body.dark-mode {
+      background-color: #001f27;
+      background-image: linear-gradient(rgba(0, 31, 39, 0.65), rgba(0, 48, 59, 0.65)), url('asset/background/ocean_background.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    .album-page-container {
+      padding: 40px 0;
+    }
+
+    .album-container {
+      max-width: 1000px;
+      width: 92%;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      display: flex;
+      gap: 32px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode .album-container {
+      background: rgba(15, 26, 30, 0.75);
+      border: 1px solid rgba(60, 215, 255, 0.25);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.15);
+    }
+
+    .album-cover-wrapper {
+      width: 260px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .album-cover {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .album-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+    }
+
+    .song-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+
+    .song-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    /* Zebra-striping: odd-numbered rows (1, 3, 5...) get highlight container */
+    .song-row:nth-child(odd) {
+      background: rgba(0, 168, 204, 0.08);
+    }
+
+    body.dark-mode .song-row:nth-child(odd) {
+      background: rgba(56, 189, 248, 0.12);
+    }
+
+    .song-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .song-num {
+      min-width: 24px;
+      color: var(--accent-cyan);
+      font-weight: 700;
+    }
+
+    .song-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: var(--text-color);
+    }
+
+    .song-dots {
+      flex: 1;
+      border-bottom: 2px dotted var(--text-subtle);
+      opacity: 0.35;
+      margin: 0 10px;
+    }
+
+    .song-duration {
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    /* Action Buttons at Bottom Right */
+    .album-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: auto;
+    }
+
+    .icon-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 1.5px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .icon-btn:hover {
+      transform: translateY(-3px) scale(1.08);
+      box-shadow: 0 6px 16px var(--glow-cyan);
+      border-color: var(--accent-cyan);
+    }
+
+    .icon-btn svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Mobile Responsive Breakpoint */
+    @media (max-width: 768px) {
+      .album-container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+      }
+
+      .album-cover-wrapper {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+
+      .album-actions {
+        justify-content: center;
+        margin-top: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -24,6 +209,138 @@
       </button>
     </div>
   </header>
+
+  <main class="main-content album-page-container">
+    <!-- Container 1 — Faithful -->
+    <div class="album-container">
+      <div class="album-cover-wrapper">
+        <img src="asset/Album_cover/faithful.jpeg" alt="Faithful Album Cover" class="album-cover">
+      </div>
+      <div class="album-details">
+        <div class="song-list">
+          <div class="song-row"><div class="song-left"><span class="song-num">1.</span><span class="song-title">Trimakasih Tuhan</span></div><div class="song-dots"></div><span class="song-duration">4:34</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">2.</span><span class="song-title">Bapa Kau Baik</span></div><div class="song-dots"></div><span class="song-duration">3:56</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">3.</span><span class="song-title">Dia Yesus Sahabatku</span></div><div class="song-dots"></div><span class="song-duration">2:27</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">4.</span><span class="song-title">Bapa, ini aku anakMU</span></div><div class="song-dots"></div><span class="song-duration">5:53</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">5.</span><span class="song-title">Kau Kusembah</span></div><div class="song-dots"></div><span class="song-duration">6:17</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">6.</span><span class="song-title">Tuhan itu Baik</span></div><div class="song-dots"></div><span class="song-duration">3:38</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">7.</span><span class="song-title">Ku Cinta Tuhan</span></div><div class="song-dots"></div><span class="song-duration">4:27</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">8.</span><span class="song-title">Slamatkan Indonesia</span></div><div class="song-dots"></div><span class="song-duration">5:13</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">9.</span><span class="song-title">Karna SalibMU</span></div><div class="song-dots"></div><span class="song-duration">4:11</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">10.</span><span class="song-title">Hip Hip Hore</span></div><div class="song-dots"></div><span class="song-duration">4:07</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">11.</span><span class="song-title">Happy Birthday</span></div><div class="song-dots"></div><span class="song-duration">2:41</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">12.</span><span class="song-title">Heaven Rangers Mega</span></div><div class="song-dots"></div><span class="song-duration">2:44</span></div>
+        </div>
+        <div class="album-actions">
+          <a href="https://open.spotify.com/album/5O3eW2Ea5dsvqrRhSSrO77" target="_blank" class="icon-btn" aria-label="Spotify">
+            <svg viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.12-.779-.18-.899-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.301 1.021zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.38-1.32 9.78-.66 13.44 1.56.42.24.6.84.301 1.261zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.332-1.02 15.721 1.62.539.3.719 1.02.419 1.56-.3.54-1.02.72-1.56.42z"/></svg>
+          </a>
+          <a href="https://youtube.com/playlist?list=PL0vbK8oziq4iFryYkK3ADFgQ21cemlcNG&si=qdt3MhKB-KRyeTkG" target="_blank" class="icon-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Container 2 — Glory to God -->
+    <div class="album-container">
+      <div class="album-cover-wrapper">
+        <img src="asset/Album_cover/glory to God.jpeg" alt="Glory to God Album Cover" class="album-cover">
+      </div>
+      <div class="album-details">
+        <div class="song-list">
+          <div class="song-row"><div class="song-left"><span class="song-num">1.</span><span class="song-title">Yesus Sgalanya Bagiku</span></div><div class="song-dots"></div><span class="song-duration">4:17</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">2.</span><span class="song-title">Bersinar</span></div><div class="song-dots"></div><span class="song-duration">3:23</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">3.</span><span class="song-title">Aku Anak Tuhan</span></div><div class="song-dots"></div><span class="song-duration">4:03</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">4.</span><span class="song-title">Terimakasih Bapa</span></div><div class="song-dots"></div><span class="song-duration">3:12</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">5.</span><span class="song-title">Glory Haleluya</span></div><div class="song-dots"></div><span class="song-duration">3:46</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">6.</span><span class="song-title">Gembala yang Baik</span></div><div class="song-dots"></div><span class="song-duration">5:05</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">7.</span><span class="song-title">Kasih</span></div><div class="song-dots"></div><span class="song-duration">3:23</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">8.</span><span class="song-title">Ajarku Tuhan</span></div><div class="song-dots"></div><span class="song-duration">2:43</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">9.</span><span class="song-title">Hidupku Menjadi Berkat</span></div><div class="song-dots"></div><span class="song-duration">4:31</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">10.</span><span class="song-title">Memuji Tuhan</span></div><div class="song-dots"></div><span class="song-duration">4:02</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">11.</span><span class="song-title">Kerinduanku</span></div><div class="song-dots"></div><span class="song-duration">3:50</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">12.</span><span class="song-title">Heaven Rangers</span></div><div class="song-dots"></div><span class="song-duration">2:16</span></div>
+        </div>
+        <div class="album-actions">
+          <a href="https://open.spotify.com/album/27sElhRpFMKnMG1a31FjYo" target="_blank" class="icon-btn" aria-label="Spotify">
+            <svg viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.12-.779-.18-.899-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.301 1.021zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.38-1.32 9.78-.66 13.44 1.56.42.24.6.84.301 1.261zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.332-1.02 15.721 1.62.539.3.719 1.02.419 1.56-.3.54-1.02.72-1.56.42z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/playlist?list=PL0vbK8oziq4iHt7_MKMeCUz0pctJ1FExW" target="_blank" class="icon-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Container 3 — Goodness of God -->
+    <div class="album-container">
+      <div class="album-cover-wrapper">
+        <img src="asset/Album_cover/goodness of god.jpeg" alt="Goodness of God Album Cover" class="album-cover">
+      </div>
+      <div class="album-details">
+        <div class="song-list">
+          <div class="song-row"><div class="song-left"><span class="song-num">1.</span><span class="song-title">Kasih Tuhan</span></div><div class="song-dots"></div><span class="song-duration">3:32</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">2.</span><span class="song-title">Berkat Tuhan</span></div><div class="song-dots"></div><span class="song-duration">3:44</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">3.</span><span class="song-title">Ku Percaya</span></div><div class="song-dots"></div><span class="song-duration">4:37</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">4.</span><span class="song-title">Kau yang Utama</span></div><div class="song-dots"></div><span class="song-duration">4:26</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">5.</span><span class="song-title">Dekat denganMU</span></div><div class="song-dots"></div><span class="song-duration">4:14</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">6.</span><span class="song-title">Memuji Tuhan Kesukaanku</span></div><div class="song-dots"></div><span class="song-duration">3:40</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">7.</span><span class="song-title">Penyembahanku</span></div><div class="song-dots"></div><span class="song-duration">4:33</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">8.</span><span class="song-title">Ku Mau Menyembah</span></div><div class="song-dots"></div><span class="song-duration">4:26</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">9.</span><span class="song-title">Roh Kudus</span></div><div class="song-dots"></div><span class="song-duration">4:38</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">10.</span><span class="song-title">Dalam Nama Yesus</span></div><div class="song-dots"></div><span class="song-duration">4:05</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">11.</span><span class="song-title">Ku Bersuka</span></div><div class="song-dots"></div><span class="song-duration">3:46</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">12.</span><span class="song-title">Hari Natal</span></div><div class="song-dots"></div><span class="song-duration">3:16</span></div>
+        </div>
+        <div class="album-actions">
+          <a href="https://open.spotify.com/album/2oS0Vhl8qZDxJLZ7H1R32v" target="_blank" class="icon-btn" aria-label="Spotify">
+            <svg viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.12-.779-.18-.899-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.301 1.021zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.38-1.32 9.78-.66 13.44 1.56.42.24.6.84.301 1.261zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.332-1.02 15.721 1.62.539.3.719 1.02.419 1.56-.3.54-1.02.72-1.56.42z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/playlist?list=PL0vbK8oziq4gfZ8yrt_QV2fYCGAGtp4R5" target="_blank" class="icon-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Container 4 — Love of God -->
+    <div class="album-container">
+      <div class="album-cover-wrapper">
+        <img src="asset/Album_cover/love of god.jpeg" alt="Love of God Album Cover" class="album-cover">
+      </div>
+      <div class="album-details">
+        <div class="song-list">
+          <div class="song-row"><div class="song-left"><span class="song-num">1.</span><span class="song-title">Selamat Datang</span></div><div class="song-dots"></div><span class="song-duration">4:54</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">2.</span><span class="song-title">Bersukacita</span></div><div class="song-dots"></div><span class="song-duration">3:48</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">3.</span><span class="song-title">I Love Jesus</span></div><div class="song-dots"></div><span class="song-duration">6:47</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">4.</span><span class="song-title">Muliakan NamaMu</span></div><div class="song-dots"></div><span class="song-duration">3:00</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">5.</span><span class="song-title">Kesayanganku</span></div><div class="song-dots"></div><span class="song-duration">3:35</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">6.</span><span class="song-title">Ku Cinta Kau</span></div><div class="song-dots"></div><span class="song-duration">4:95</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">7.</span><span class="song-title">Ku Mau Percaya</span></div><div class="song-dots"></div><span class="song-duration">5:14</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">8.</span><span class="song-title">Tuhan Yesus Baik</span></div><div class="song-dots"></div><span class="song-duration">4:13</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">9.</span><span class="song-title">Hanya Bagi-Mu Tuhan</span></div><div class="song-dots"></div><span class="song-duration">4:22</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">10.</span><span class="song-title">Haleluya</span></div><div class="song-dots"></div><span class="song-duration">5:27</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">11.</span><span class="song-title">Indah</span></div><div class="song-dots"></div><span class="song-duration">2:32</span></div>
+          <div class="song-row"><div class="song-left"><span class="song-num">12.</span><span class="song-title">Guru Terbaikku</span></div><div class="song-dots"></div><span class="song-duration">5:13</span></div>
+        </div>
+        <div class="album-actions">
+          <a href="https://open.spotify.com/album/0MDmr7QVQ0PMnW9GbZFD37" target="_blank" class="icon-btn" aria-label="Spotify">
+            <svg viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.12-.779-.18-.899-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.301 1.021zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.38-1.32 9.78-.66 13.44 1.56.42.24.6.84.301 1.261zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.332-1.02 15.721 1.62.539.3.719 1.02.419 1.56-.3.54-1.02.72-1.56.42z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/playlist?list=PL0vbK8oziq4jz_uuQ0SjnuDrtjVfjtHAC" target="_blank" class="icon-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 2f. Footer -->
+  <footer class="footer">
+    <p class="footer-text">Dibawah naungan gereja :</p>
+    <img src="asset/hte_logo.png" alt="HTE Logo" class="footer-logo">
+  </footer>
 
   <script src="script.js"></script>
 </body>
