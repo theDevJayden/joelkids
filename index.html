@@ -37,7 +37,7 @@
     <div class="container">
       <!-- 2b. About paragraph -->
       <section class="section">
-        <h2 class="section-title">Tentang Kita</h2>
+        <h2 class="section-title">Joel Kids</h2>
         <div class="about-card">
           <p class="about-text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -63,33 +63,98 @@
 
     <div class="container">
       <!-- 2d. Jadwal section -->
-      <section class="section">
+      <section class="section jadwal-section">
         <h2 class="section-title">Jadwal</h2>
-        <div class="jadwal-grid">
-          <div class="jadwal-card">
-            <div>
-              <h3 class="service-title">Kids Impact</h3>
-              <p class="schedule-text">Kelas 1-6: Minggu, 07.00 - 09.00 WIB<br>Balita: Minggu, 07.30 - 09.00 WIB</p>
+        <div class="jadwal-tree-wrapper">
+          <!-- Organic Tree Branch Connector Lines -->
+          <svg class="jadwal-tree-svg" viewBox="0 0 800 600" preserveAspectRatio="none" aria-hidden="true">
+            <!-- Central Trunk Line -->
+            <path d="M 400,0 L 400,570" class="tree-line trunk-line" />
+            <circle cx="400" cy="0" r="5" class="tree-node" />
+            <circle cx="400" cy="570" r="5" class="tree-node" />
+
+            <!-- Branch 1: Top-Left (Kids Impact) -->
+            <path d="M 400,35 C 400,65 370,65 340,65" class="tree-line branch-line" />
+            <circle cx="400" cy="35" r="4.5" class="tree-node" />
+
+            <!-- Branch 2: Row 2 Right (Kids Revival) -->
+            <path d="M 400,185 C 400,215 430,215 460,215" class="tree-line branch-line" />
+            <circle cx="400" cy="185" r="4.5" class="tree-node" />
+
+            <!-- Branch 3: Row 3 Left (Kids Fire) -->
+            <path d="M 400,335 C 400,365 370,365 340,365" class="tree-line branch-line" />
+            <circle cx="400" cy="335" r="4.5" class="tree-node" />
+
+            <!-- Branch 4: Row 4 Right (Ibadah Online) -->
+            <path d="M 400,485 C 400,515 430,515 460,515" class="tree-line branch-line" />
+            <circle cx="400" cy="485" r="4.5" class="tree-node" />
+          </svg>
+
+          <div class="jadwal-grid">
+            <!-- Card 1: Top Left -->
+            <div class="jadwal-card card-impact">
+              <div class="card-inner">
+                <div class="card-badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="badge-icon" fill="currentColor">
+                    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                  </svg>
+                </div>
+                <div class="card-content">
+                  <h3 class="service-title">Kids Impact</h3>
+                  <div class="title-underline"></div>
+                  <p class="schedule-text">Kelas 1-6: Minggu, 07.00 - 09.00 WIB<br>Balita: Minggu, 07.30 - 09.00 WIB</p>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="jadwal-card">
-            <div>
-              <h3 class="service-title">Kids Revival</h3>
-              <p class="schedule-text">Kelas 1-6: Minggu, 10.00 - 12.00 WIB<br>Balita: Minggu, 10.30 - 12.00 WIB</p>
+
+            <!-- Card 2: Row 2 Right -->
+            <div class="jadwal-card card-revival">
+              <div class="card-inner">
+                <div class="card-badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="badge-icon" fill="currentColor">
+                    <path d="M10.5 2h3v6h6v3h-6v11h-3V11h-6V8h6V2z"/>
+                  </svg>
+                </div>
+                <div class="card-content">
+                  <h3 class="service-title">Kids Revival</h3>
+                  <div class="title-underline"></div>
+                  <p class="schedule-text">Kelas 1-6: Minggu, 10.00 - 12.00 WIB<br>Balita: Minggu, 10.30 - 12.00 WIB</p>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="jadwal-card">
-            <div>
-              <h3 class="service-title">Kids Fire</h3>
-              <p class="schedule-text">Kelas 1-6: Minggu, 17.00 - 19.00 WIB<br>Balita: Minggu, 17.30 - 19.00 WIB</p>
+
+            <!-- Card 3: Row 3 Left -->
+            <div class="jadwal-card card-fire">
+              <div class="card-inner">
+                <div class="card-badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="badge-icon" fill="currentColor">
+                    <path d="M12 2.5c0 0-5.5 6-5.5 11 0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5c0-5-5.5-11-5.5-11zm0 14c-1.66 0-3-1.34-3-3 0-1.8 1.8-4.2 3-5.5 1.2 1.3 3 3.7 3 5.5 0 1.66-1.34 3-3 3z"/>
+                  </svg>
+                </div>
+                <div class="card-content">
+                  <h3 class="service-title">Kids Fire</h3>
+                  <div class="title-underline"></div>
+                  <p class="schedule-text">Kelas 1-6: Minggu, 17.00 - 19.00 WIB<br>Balita: Minggu, 17.30 - 19.00 WIB</p>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="jadwal-card">
-            <div>
-              <h3 class="service-title">Ibadah Online</h3>
-              <p class="schedule-text">Dapat ditonton di channel YouTube "Joel Kids Ministry".</p>
+
+            <!-- Card 4: Row 4 Right -->
+            <div class="jadwal-card card-online">
+              <div class="card-inner">
+                <div class="card-badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="badge-icon" fill="currentColor">
+                    <path d="M21.58 7.19a2.71 2.71 0 0 0-1.9-1.9C18 4.75 12 4.75 12 4.75s-6 0-7.68.54a2.71 2.71 0 0 0-1.9 1.9C2 8.87 2 12 2 12s0 3.13.42 4.81a2.71 2.71 0 0 0 1.9 1.9c1.68.54 7.68.54 7.68.54s6 0 7.68-.54a2.71 2.71 0 0 0 1.9-1.9C22 15.13 22 12 22 12s0-3.13-.42-4.81zM9.75 15.02V8.98L15 12l-5.25 3.02z"/>
+                  </svg>
+                </div>
+                <div class="card-content">
+                  <h3 class="service-title">Ibadah Online</h3>
+                  <div class="title-underline"></div>
+                  <p class="schedule-text">Dapat ditonton di channel YouTube "Joel Kids Ministry".</p>
+                  <a href="https://youtube.com/@joelkidsministry?si=W3_oBHQ2Awij22_t" target="_blank" class="yt-btn">Tonton di YouTube</a>
+                </div>
+              </div>
             </div>
-            <a href="https://youtube.com/@joelkidsministry?si=W3_oBHQ2Awij22_t" target="_blank" class="yt-btn">Tonton di YouTube</a>
           </div>
         </div>
       </section>
