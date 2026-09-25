@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Album Lagu Rohani Anak | Joel Kids Ministry</title>
+  <meta name="description" content="Koleksi album lagu pujian dan penyembahan rohani anak Joel Kids Ministry. Dengarkan di Spotify dan YouTube.">
+  <link rel="icon" type="image/svg+xml" href="asset/icon.svg">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ── Ambient Ocean Atmosphere Decor ────────────────────────── -->
+  <div class="ocean-sunrays" aria-hidden="true">
+    <div class="ray ray-1"></div>
+    <div class="ray ray-2"></div>
+    <div class="ray ray-3"></div>
+  </div>
+  <div class="ocean-bubbles" aria-hidden="true"></div>
+  <canvas id="ohzi-ambient-canvas" class="ambient-stars-canvas" aria-hidden="true"></canvas>
+  <canvas id="biolum-fluid-canvas" class="biolum-fluid-canvas" aria-hidden="true"></canvas>
+
+  <!-- ── Landon Norris Topographic Contour Lines Layer ─────────── -->
+  <div class="landon-topographic-layer" aria-hidden="true">
+    <svg class="topo-svg" viewBox="0 0 1600 1000" preserveAspectRatio="none">
+      <path d="M-100,180 C250,80 500,280 850,150 C1200,20 1450,220 1700,160" class="topo-path p1" />
+      <path d="M-100,260 C280,160 520,380 900,240 C1240,110 1480,310 1700,250" class="topo-path p2" />
+      <path d="M-100,420 C320,320 600,520 980,380 C1300,250 1520,460 1700,400" class="topo-path p3" />
+      <path d="M-100,580 C240,500 560,700 920,560 C1260,430 1460,650 1700,600" class="topo-path p4" />
+      <path d="M-100,740 C350,660 680,860 1050,720 C1340,600 1540,810 1700,760" class="topo-path p5" />
+      <path d="M-100,900 C280,820 620,980 980,870 C1280,770 1490,940 1700,910" class="topo-path p6" />
+    </svg>
+  </div>
+
+  <!-- ── Sticky Frosted Glass Navbar ───────────────────────────── -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand" aria-label="Beranda Joel Kids">
+        <img src="asset/joelkids_logo.png" alt="Joel Kids Logo" class="logo-img" onerror="this.src='asset/icon.svg'">
+        <div class="brand-text">
+          <span class="brand-title joelkids-rainbow-hook" aria-label="Joel Kids">
+            <span class="rainbow-letter" data-color="#ff3355">J</span><span class="rainbow-letter" data-color="#ff7a00">o</span><span class="rainbow-letter" data-color="#ffd200">e</span><span class="rainbow-letter" data-color="#00e676">l</span><span class="rainbow-space">&nbsp;</span><span class="rainbow-letter" data-color="#00d4c8">K</span><span class="rainbow-letter" data-color="#00a2ff">i</span><span class="rainbow-letter" data-color="#9d4edd">d</span><span class="rainbow-letter" data-color="#ff3399">s</span>
+          </span>
+          <span class="brand-sub">MINISTRY</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html#about" class="nav-link">Tentang Kita</a></li>
+          <li><a href="index.html#jadwal" class="nav-link">Jadwal Ibadah</a></li>
+          <li><a href="index.html#banner-heroes" class="nav-link">Banner Kelas</a></li>
+          <li><a href="index.html#kelas" class="nav-link">Kelas Anak</a></li>
+          <li><a href="index.html#social" class="nav-link">Media Sosial</a></li>
+          <li><a href="album-lagu.html" class="nav-link nav-highlight">Album Lagu 🎵</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="sound-toggle" class="sound-toggle-btn" aria-label="Aktifkan Sound Effects" title="Sound Atmosphere (Active Theory Style)">
+          <span class="sound-eq-icon" aria-hidden="true">
+            <span class="s-bar"></span>
+            <span class="s-bar"></span>
+            <span class="s-bar"></span>
+          </span>
+          <span id="sound-text">Sound: OFF</span>
+        </button>
+
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Ganti Tema">
+          <span id="theme-icon">🌊</span>
+          <span id="theme-text">Deep Ocean</span>
+        </button>
+
+        <button id="mobile-toggle" class="mobile-toggle-btn" aria-label="Buka Menu Navigasi">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+  <main class="main-content">
+    <div class="album-hero-header">
+      <h1 class="hero-title">
+        ALBUM LAGU <br>
+        <span class="gradient-text joelkids-rainbow-hook" id="hero-title-hook" aria-label="Joel Kids">
+          <span class="rainbow-letter" data-color="#ff3355">J</span><span class="rainbow-letter" data-color="#ff7a00">o</span><span class="rainbow-letter" data-color="#ffd200">e</span><span class="rainbow-letter" data-color="#00e676">l</span><span class="rainbow-space">&nbsp;</span><span class="rainbow-letter" data-color="#00d4c8">K</span><span class="rainbow-letter" data-color="#00a2ff">i</span><span class="rainbow-letter" data-color="#9d4edd">d</span><span class="rainbow-letter" data-color="#ff3399">s</span>
+        </span>
+      </h1>
+      <p class="hero-subtitle">
+        Lagu-lagu pujian dan penyembahan yang membesarkan nama Tuhan Yesus serta menyalakan api pujian di hati setiap anak.
+      </p>
+    </div>
+
+    <!-- Vision Marquee Banner -->
+    <section class="vision-marquee-section" aria-label="Ayat Firman Berjalan">
+      <div class="marquee-track">
+        <div class="marquee-content">
+          <span class="marquee-badge">MAZMUR 8:3</span>
+          <span class="marquee-text">DARI MULUT BAYI-BAYI DAN ANAK-ANAK YANG MENYUSU TELAH KAULETAKKAN DASAR KEKUATAN</span>
+          <span class="marquee-star">✦</span>
+          <span class="marquee-badge">PUJIAN ANAK</span>
+          <span class="marquee-text">BERSUKACITA MEMULIAKAN TUHAN YESUS</span>
+          <span class="marquee-star">✦</span>
+          <span class="marquee-badge">GENERASI EMAS</span>
+          <span class="marquee-text">PUJIAN DARI HATI ANAK-ANAK</span>
+          <span class="marquee-star">✦</span>
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+          <span class="marquee-badge">MAZMUR 8:3</span>
+          <span class="marquee-text">DARI MULUT BAYI-BAYI DAN ANAK-ANAK YANG MENYUSU TELAH KAULETAKKAN DASAR KEKUATAN</span>
+          <span class="marquee-star">✦</span>
+          <span class="marquee-badge">PUJIAN ANAK</span>
+          <span class="marquee-text">BERSUKACITA MEMULIAKAN TUHAN YESUS</span>
+          <span class="marquee-star">✦</span>
+          <span class="marquee-badge">GENERASI EMAS</span>
+          <span class="marquee-text">PUJIAN DARI HATI ANAK-ANAK</span>
+          <span class="marquee-star">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-wrapper">
+      <div class="album-showcase-container">
+        <!-- ── ALBUM 1: Faithful God (2024) ── -->
+        <article class="album-showcase-card" id="album-1">
+          <!-- Left Interactive Vinyl Cover Sleeve -->
+          <div class="album-cover-box">
+            <div class="vinyl-disc" aria-hidden="true">
+              <div class="vinyl-grooves"></div>
+              <div class="vinyl-center-label" style="background-image: url('asset/albums/faithful_god.jpg');"></div>
+            </div>
+            <img src="asset/albums/faithful_god.jpg" alt="Cover Album Faithful God" class="album-cover-img" onerror="this.src='asset/icon.svg'">
+          </div>
+
+          <!-- Right Tracklist & Controls -->
+          <div class="album-tracklist-section">
+            <div class="album-header-meta">
+              <div class="album-title-group">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span class="album-pill-badge">2024 • 12 LAGU • FULL ALBUM</span>
+                  <span class="editorial-index-chip">// 01</span>
+                </div>
+                <h2 class="album-card-title">Faithful God</h2>
+              </div>
+              <a href="https://open.spotify.com/album/5O3eW2Ea5dsvqrRhSSrO77" target="_blank" rel="noopener noreferrer" class="album-spotify-link-btn" title="Buka di Spotify">
+                <svg viewBox="0 0 24 24" class="btn-spotify-svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.12-.779-.18-.899-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.301 1.021zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.38-1.32 9.78-.66 13.44 1.56.42.24.6.84.301 1.261zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.332-1.02 15.721 1.62.539.3.719 1.02.419 1.56-.3.54-1.02.72-1.56.42z"/></svg>
+                <span>Spotify</span>
+              </a>
+            </div>
+
+            <div class="album-tracks-wrap">
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/e2b650b3fbe5da2da6e2aa2eff962202c747c41d" data-title="Trimakasih Tuhan" data-album="Faithful God" data-cover="asset/albums/faithful_god.jpg">
+                <button class="track-play-btn" aria-label="Play Trimakasih Tuhan" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">1.</span>
+                <span class="track-song-title">Trimakasih Tuhan</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:34</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/5cfa8feedf4fe866557b68167e59d843ed080ce0" data-title="Bapa Kau Baik" data-album="Faithful God" data-cover="asset/albums/faithful_god.jpg">
+                <button class="track-play-btn" aria-label="Play Bapa Kau Baik" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">2.</span>
+                <span class="track-song-title">Bapa Kau Baik</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">3:56</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/24f061b3abe03597d5f9a3a67bbee91e3a28724f" data-title="Dia Yesus Sahabatku" data-album="Faithful God" data-cover="asset/albums/faithful_god.jpg">
+                <button class="track-play-btn" aria-label="Play Dia Yesus Sahabatku" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">3.</span>
+                <span class="track-song-title">Dia Yesus Sahabatku</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">2:27</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/7e89a4c64b4cd1b1705da356986ffad27a7eaf8a" data-title="Bapa, ini aku anakMU" data-album="Faithful God" data-cover="asset/albums/faithful_god.jpg">
+                <button class="track-play-btn" aria-label="Play Bapa, ini aku anakMU" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">4.</span>
+                <span class="track-song-title">Bapa, ini aku anakMU</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">5:53</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/01f15e7411cfbe83e7b596d0564c6f1399bf56dd" data-title="Kau Kusembah" data-album="Faithful God" data-cover="asset/albums/faithful_god.jpg">
+                <button class="track-play-btn" aria-label="Play Kau Kusembah" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">5.</span>
+                <span class="track-song-title">Kau Kusembah</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">6:17</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/38dbc7255cc5759caf0bd6d45d55f2a4c9f53206" data-title="Tuhan itu Baik" data-album="Faithful God" data-cover="asset/albums/faithful_god.jpg">
+                <button class="track-play-btn" aria-label="Play Tuhan itu Baik" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">6.</span>
+                <span class="track-song-title">Tuhan itu Baik</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">3:37</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/23150f4bc7d9520b00e476fb045e0a81898eb597" data-title="Ku Cinta Tuhan" data-album="Faithful God" data-cover="asset/albums/faithful_god.jpg">
+                <button class="track-play-btn" aria-label="Play Ku Cinta Tuhan" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">7.</span>
+                <span class="track-song-title">Ku Cinta Tuhan</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:27</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/75386d1ec61f6148f760b031e8c6b945f014a3a4" data-title="Slamatkan Indonesia" data-album="Faithful God" data-cover="asset/albums/faithful_god.jpg">
+                <button class="track-play-btn" aria-label="Play Slamatkan Indonesia" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">8.</span>
+                <span class="track-song-title">Slamatkan Indonesia</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">5:13</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/1a25458f37889ca0a1ab3d99472c3a2cb67fdc09" data-title="Karna SalibMU" data-album="Faithful God" data-cover="asset/albums/faithful_god.jpg">
+                <button class="track-play-btn" aria-label="Play Karna SalibMU" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">9.</span>
+                <span class="track-song-title">Karna SalibMU</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:11</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/5c7ee526552b80a0b02a3156a6ef91c59bb4f104" data-title="Hip Hip Hore" data-album="Faithful God" data-cover="asset/albums/faithful_god.jpg">
+                <button class="track-play-btn" aria-label="Play Hip Hip Hore" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">10.</span>
+                <span class="track-song-title">Hip Hip Hore</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:07</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/d820c47d74fdf74dfafb2899ad8fe81c3e6e4d3b" data-title="Happy Birthday" data-album="Faithful God" data-cover="asset/albums/faithful_god.jpg">
+                <button class="track-play-btn" aria-label="Play Happy Birthday" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">11.</span>
+                <span class="track-song-title">Happy Birthday</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">2:41</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/7940feb277a8eeb78f0b44523c8ba9a7cfad4582" data-title="Heaven Rangers Mega" data-album="Faithful God" data-cover="asset/albums/faithful_god.jpg">
+                <button class="track-play-btn" aria-label="Play Heaven Rangers Mega" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">12.</span>
+                <span class="track-song-title">Heaven Rangers Mega</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">2:44</span>
+              </div>
+            </div>
+
+            <!-- Bottom Floating Action Buttons -->
+            <div class="album-footer-actions">
+              <a href="https://open.spotify.com/album/5O3eW2Ea5dsvqrRhSSrO77" target="_blank" rel="noopener noreferrer" class="circle-media-btn spotify-icon-circle" title="Dengarkan Album di Spotify" aria-label="Spotify">
+                <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.12-.779-.18-.899-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.301 1.021zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.38-1.32 9.78-.66 13.44 1.56.42.24.6.84.301 1.261zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.332-1.02 15.721 1.62.539.3.719 1.02.419 1.56-.3.54-1.02.72-1.56.42z"/></svg>
+              </a>
+              <a href="https://youtube.com/@joelkidsministry?si=W3_oBHQ2Awij22_t" target="_blank" rel="noopener noreferrer" class="circle-media-btn youtube-icon-circle" title="Tonton Video di YouTube" aria-label="YouTube">
+                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── ALBUM 2: Goodness of God (2023) ── -->
+        <article class="album-showcase-card" id="album-2">
+          <!-- Left Interactive Vinyl Cover Sleeve -->
+          <div class="album-cover-box">
+            <div class="vinyl-disc" aria-hidden="true">
+              <div class="vinyl-grooves"></div>
+              <div class="vinyl-center-label" style="background-image: url('asset/albums/goodness_of_god.jpg');"></div>
+            </div>
+            <img src="asset/albums/goodness_of_god.jpg" alt="Cover Album Goodness of God" class="album-cover-img" onerror="this.src='asset/icon.svg'">
+          </div>
+
+          <!-- Right Tracklist & Controls -->
+          <div class="album-tracklist-section">
+            <div class="album-header-meta">
+              <div class="album-title-group">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span class="album-pill-badge">2023 • 12 LAGU • FULL ALBUM</span>
+                  <span class="editorial-index-chip">// 02</span>
+                </div>
+                <h2 class="album-card-title">Goodness of God</h2>
+              </div>
+              <a href="https://open.spotify.com/album/2oS0Vhl8qZDxJLZ7H1R32v" target="_blank" rel="noopener noreferrer" class="album-spotify-link-btn" title="Buka di Spotify">
+                <svg viewBox="0 0 24 24" class="btn-spotify-svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.12-.779-.18-.899-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.301 1.021zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.38-1.32 9.78-.66 13.44 1.56.42.24.6.84.301 1.261zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.332-1.02 15.721 1.62.539.3.719 1.02.419 1.56-.3.54-1.02.72-1.56.42z"/></svg>
+                <span>Spotify</span>
+              </a>
+            </div>
+
+            <div class="album-tracks-wrap">
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/d1f48348d0641da13a3af4fb4ee69822b4b364d7" data-title="Kasih Tuhan" data-album="Goodness of God" data-cover="asset/albums/goodness_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Kasih Tuhan" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">1.</span>
+                <span class="track-song-title">Kasih Tuhan</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">3:32</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/03a03466c9d972598deb100a7905f9b9873d382a" data-title="Berkat Tuhan" data-album="Goodness of God" data-cover="asset/albums/goodness_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Berkat Tuhan" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">2.</span>
+                <span class="track-song-title">Berkat Tuhan</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">3:45</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/e9f2c716ddee5f8ce334cecfce19944dce1790ae" data-title="Ku Percaya" data-album="Goodness of God" data-cover="asset/albums/goodness_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Ku Percaya" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">3.</span>
+                <span class="track-song-title">Ku Percaya</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:38</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/10e5326854af632408fc524b5e838538841d1042" data-title="Kau yang Utama" data-album="Goodness of God" data-cover="asset/albums/goodness_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Kau yang Utama" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">4.</span>
+                <span class="track-song-title">Kau yang Utama</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:26</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/7924ad147a18a563686f5d9def9cf4582f5b0a59" data-title="Dekat denganMU" data-album="Goodness of God" data-cover="asset/albums/goodness_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Dekat denganMU" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">5.</span>
+                <span class="track-song-title">Dekat denganMU</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:15</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/af01c01dc6039b8a0d599850d55552a87463b275" data-title="Memuji Tuhan Kesukaanku" data-album="Goodness of God" data-cover="asset/albums/goodness_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Memuji Tuhan Kesukaanku" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">6.</span>
+                <span class="track-song-title">Memuji Tuhan Kesukaanku</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">3:41</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/ddbdff535bc632f93a87e84c5af6a7ee2ead0f72" data-title="Penyembahanku" data-album="Goodness of God" data-cover="asset/albums/goodness_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Penyembahanku" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">7.</span>
+                <span class="track-song-title">Penyembahanku</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:33</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/6a1ef1f0198516e46d84717cf9d558650f13cf09" data-title="Ku Mau Menyembah" data-album="Goodness of God" data-cover="asset/albums/goodness_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Ku Mau Menyembah" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">8.</span>
+                <span class="track-song-title">Ku Mau Menyembah</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:27</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/ed758046615e22bd7832010e3f073aa93c899d27" data-title="Roh Kudus" data-album="Goodness of God" data-cover="asset/albums/goodness_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Roh Kudus" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">9.</span>
+                <span class="track-song-title">Roh Kudus</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:39</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/e76000959d99421127ccb944e5549f3279a2a139" data-title="Dalam Nama Yesus" data-album="Goodness of God" data-cover="asset/albums/goodness_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Dalam Nama Yesus" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">10.</span>
+                <span class="track-song-title">Dalam Nama Yesus</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:05</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/5c88008141166f1ba5ec1853e6cd8c0838dd538d" data-title="Ku Bersuka" data-album="Goodness of God" data-cover="asset/albums/goodness_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Ku Bersuka" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">11.</span>
+                <span class="track-song-title">Ku Bersuka</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">3:46</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/33e4c5b2b7b263d25dfbedf038a9438f97527acc" data-title="Hari Natal" data-album="Goodness of God" data-cover="asset/albums/goodness_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Hari Natal" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">12.</span>
+                <span class="track-song-title">Hari Natal</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">3:16</span>
+              </div>
+            </div>
+
+            <!-- Bottom Floating Action Buttons -->
+            <div class="album-footer-actions">
+              <a href="https://open.spotify.com/album/2oS0Vhl8qZDxJLZ7H1R32v" target="_blank" rel="noopener noreferrer" class="circle-media-btn spotify-icon-circle" title="Dengarkan Album di Spotify" aria-label="Spotify">
+                <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.12-.779-.18-.899-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.301 1.021zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.38-1.32 9.78-.66 13.44 1.56.42.24.6.84.301 1.261zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.332-1.02 15.721 1.62.539.3.719 1.02.419 1.56-.3.54-1.02.72-1.56.42z"/></svg>
+              </a>
+              <a href="https://youtube.com/@joelkidsministry?si=W3_oBHQ2Awij22_t" target="_blank" rel="noopener noreferrer" class="circle-media-btn youtube-icon-circle" title="Tonton Video di YouTube" aria-label="YouTube">
+                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── ALBUM 3: Love of God (2023) ── -->
+        <article class="album-showcase-card" id="album-3">
+          <!-- Left Interactive Vinyl Cover Sleeve -->
+          <div class="album-cover-box">
+            <div class="vinyl-disc" aria-hidden="true">
+              <div class="vinyl-grooves"></div>
+              <div class="vinyl-center-label" style="background-image: url('asset/albums/love_of_god.jpg');"></div>
+            </div>
+            <img src="asset/albums/love_of_god.jpg" alt="Cover Album Love of God" class="album-cover-img" onerror="this.src='asset/icon.svg'">
+          </div>
+
+          <!-- Right Tracklist & Controls -->
+          <div class="album-tracklist-section">
+            <div class="album-header-meta">
+              <div class="album-title-group">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span class="album-pill-badge">2023 • 12 LAGU • FULL ALBUM</span>
+                  <span class="editorial-index-chip">// 03</span>
+                </div>
+                <h2 class="album-card-title">Love of God</h2>
+              </div>
+              <a href="https://open.spotify.com/album/0MDmr7QVQ0PMnW9GbZFD37" target="_blank" rel="noopener noreferrer" class="album-spotify-link-btn" title="Buka di Spotify">
+                <svg viewBox="0 0 24 24" class="btn-spotify-svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.12-.779-.18-.899-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.301 1.021zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.38-1.32 9.78-.66 13.44 1.56.42.24.6.84.301 1.261zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.332-1.02 15.721 1.62.539.3.719 1.02.419 1.56-.3.54-1.02.72-1.56.42z"/></svg>
+                <span>Spotify</span>
+              </a>
+            </div>
+
+            <div class="album-tracks-wrap">
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/773632a704e792720356c117a501b632ad663ed2" data-title="Selamat Datang" data-album="Love of God" data-cover="asset/albums/love_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Selamat Datang" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">1.</span>
+                <span class="track-song-title">Selamat Datang</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:54</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/b322fa6af75927dcd6fd160df87626c29abe2431" data-title="Bersukacita" data-album="Love of God" data-cover="asset/albums/love_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Bersukacita" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">2.</span>
+                <span class="track-song-title">Bersukacita</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">3:48</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/c0e170183e5339c3a9f3f6e930ba6827e8b6b9e6" data-title="I Love Jesus" data-album="Love of God" data-cover="asset/albums/love_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play I Love Jesus" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">3.</span>
+                <span class="track-song-title">I Love Jesus</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">6:47</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/e53c11ce489df8e9b69499e1fd005dae11d86ba9" data-title="Muliakan NamaMu" data-album="Love of God" data-cover="asset/albums/love_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Muliakan NamaMu" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">4.</span>
+                <span class="track-song-title">Muliakan NamaMu</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">3:00</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/2e737493f6528f1a4dd44ca91e544ff9a16150fd" data-title="Kesayanganku" data-album="Love of God" data-cover="asset/albums/love_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Kesayanganku" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">5.</span>
+                <span class="track-song-title">Kesayanganku</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">3:35</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/7d27f44ff480fcd95408f591a902eb4792263e98" data-title="Ku Cinta Kau" data-album="Love of God" data-cover="asset/albums/love_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Ku Cinta Kau" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">6.</span>
+                <span class="track-song-title">Ku Cinta Kau</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:55</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/ae2abc393dd7f238b793655ac8347d193f57f937" data-title="Ku Mau Percaya" data-album="Love of God" data-cover="asset/albums/love_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Ku Mau Percaya" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">7.</span>
+                <span class="track-song-title">Ku Mau Percaya</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">5:14</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/89f24793d898ce87f8750efdb2baab019247d493" data-title="Tuhan Yesus Baik" data-album="Love of God" data-cover="asset/albums/love_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Tuhan Yesus Baik" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">8.</span>
+                <span class="track-song-title">Tuhan Yesus Baik</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:13</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/7fa511a3c2206b76c84ffb5b49cd056672c72bbb" data-title="Hanya Bagi-Mu Tuhan" data-album="Love of God" data-cover="asset/albums/love_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Hanya Bagi-Mu Tuhan" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">9.</span>
+                <span class="track-song-title">Hanya Bagi-Mu Tuhan</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:22</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/6633f90b9e6193a38ed39a25d3a8c6393d1831c5" data-title="Haleluya" data-album="Love of God" data-cover="asset/albums/love_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Haleluya" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">10.</span>
+                <span class="track-song-title">Haleluya</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">5:27</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/6f76e091f4041d1153a9765f9e8b7b54dae60123" data-title="Indah" data-album="Love of God" data-cover="asset/albums/love_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Indah" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">11.</span>
+                <span class="track-song-title">Indah</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">2:32</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/0d82fd11b762eab2761f7de8eca48f0fe33173f1" data-title="Guru Terbaikku" data-album="Love of God" data-cover="asset/albums/love_of_god.jpg">
+                <button class="track-play-btn" aria-label="Play Guru Terbaikku" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">12.</span>
+                <span class="track-song-title">Guru Terbaikku</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">5:13</span>
+              </div>
+            </div>
+
+            <!-- Bottom Floating Action Buttons -->
+            <div class="album-footer-actions">
+              <a href="https://open.spotify.com/album/0MDmr7QVQ0PMnW9GbZFD37" target="_blank" rel="noopener noreferrer" class="circle-media-btn spotify-icon-circle" title="Dengarkan Album di Spotify" aria-label="Spotify">
+                <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.12-.779-.18-.899-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.301 1.021zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.38-1.32 9.78-.66 13.44 1.56.42.24.6.84.301 1.261zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.332-1.02 15.721 1.62.539.3.719 1.02.419 1.56-.3.54-1.02.72-1.56.42z"/></svg>
+              </a>
+              <a href="https://youtube.com/@joelkidsministry?si=W3_oBHQ2Awij22_t" target="_blank" rel="noopener noreferrer" class="circle-media-btn youtube-icon-circle" title="Tonton Video di YouTube" aria-label="YouTube">
+                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── ALBUM 4: Glory to God (2023) ── -->
+        <article class="album-showcase-card" id="album-4">
+          <!-- Left Interactive Vinyl Cover Sleeve -->
+          <div class="album-cover-box">
+            <div class="vinyl-disc" aria-hidden="true">
+              <div class="vinyl-grooves"></div>
+              <div class="vinyl-center-label" style="background-image: url('asset/albums/glory_to_god.jpg');"></div>
+            </div>
+            <img src="asset/albums/glory_to_god.jpg" alt="Cover Album Glory to God" class="album-cover-img" onerror="this.src='asset/icon.svg'">
+          </div>
+
+          <!-- Right Tracklist & Controls -->
+          <div class="album-tracklist-section">
+            <div class="album-header-meta">
+              <div class="album-title-group">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span class="album-pill-badge">2023 • 12 LAGU • FULL ALBUM</span>
+                  <span class="editorial-index-chip">// 04</span>
+                </div>
+                <h2 class="album-card-title">Glory to God</h2>
+              </div>
+              <a href="https://open.spotify.com/album/27sElhRpFMKnMG1a31FjYo" target="_blank" rel="noopener noreferrer" class="album-spotify-link-btn" title="Buka di Spotify">
+                <svg viewBox="0 0 24 24" class="btn-spotify-svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.12-.779-.18-.899-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.301 1.021zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.38-1.32 9.78-.66 13.44 1.56.42.24.6.84.301 1.261zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.332-1.02 15.721 1.62.539.3.719 1.02.419 1.56-.3.54-1.02.72-1.56.42z"/></svg>
+                <span>Spotify</span>
+              </a>
+            </div>
+
+            <div class="album-tracks-wrap">
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/06bb0bcf3ba181e9391b0ec90d8027a019debb6d" data-title="Yesus sgalanya Bagiku" data-album="Glory to God" data-cover="asset/albums/glory_to_god.jpg">
+                <button class="track-play-btn" aria-label="Play Yesus sgalanya Bagiku" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">1.</span>
+                <span class="track-song-title">Yesus sgalanya Bagiku</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:17</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/d205734aad283ec8fb4328ba395ef8f793929663" data-title="Bersinar" data-album="Glory to God" data-cover="asset/albums/glory_to_god.jpg">
+                <button class="track-play-btn" aria-label="Play Bersinar" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">2.</span>
+                <span class="track-song-title">Bersinar</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">3:23</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/27337c410e1e65470bf4ad608f21d5c0063f418c" data-title="Aku Anak Tuhan" data-album="Glory to God" data-cover="asset/albums/glory_to_god.jpg">
+                <button class="track-play-btn" aria-label="Play Aku Anak Tuhan" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">3.</span>
+                <span class="track-song-title">Aku Anak Tuhan</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:03</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/9ee4fef94f9411150fd4260644f832fbdbacd6f6" data-title="Terimakasih Bapa" data-album="Glory to God" data-cover="asset/albums/glory_to_god.jpg">
+                <button class="track-play-btn" aria-label="Play Terimakasih Bapa" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">4.</span>
+                <span class="track-song-title">Terimakasih Bapa</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">3:12</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/730a813c926d0ca69b2f7c2f1f743fcb4a3bd7a1" data-title="Glory Haleluya" data-album="Glory to God" data-cover="asset/albums/glory_to_god.jpg">
+                <button class="track-play-btn" aria-label="Play Glory Haleluya" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">5.</span>
+                <span class="track-song-title">Glory Haleluya</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">3:46</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/58edcb1e860b88a32d6f9487eb0417497d476d1b" data-title="Gembala yang Baik" data-album="Glory to God" data-cover="asset/albums/glory_to_god.jpg">
+                <button class="track-play-btn" aria-label="Play Gembala yang Baik" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">6.</span>
+                <span class="track-song-title">Gembala yang Baik</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">5:05</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/5621e79407370fb9fc9029c32a93a7de735b8340" data-title="Kasih" data-album="Glory to God" data-cover="asset/albums/glory_to_god.jpg">
+                <button class="track-play-btn" aria-label="Play Kasih" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">7.</span>
+                <span class="track-song-title">Kasih</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">3:23</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/b03aa20ce7840b9536d3f3a0ef7ea3e3c77a6806" data-title="Ajarku Tuhan" data-album="Glory to God" data-cover="asset/albums/glory_to_god.jpg">
+                <button class="track-play-btn" aria-label="Play Ajarku Tuhan" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">8.</span>
+                <span class="track-song-title">Ajarku Tuhan</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">2:43</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/4a3d5aa515cdeca331712c69195ef110b3f684fe" data-title="Hidupku Menjadi Berkat" data-album="Glory to God" data-cover="asset/albums/glory_to_god.jpg">
+                <button class="track-play-btn" aria-label="Play Hidupku Menjadi Berkat" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">9.</span>
+                <span class="track-song-title">Hidupku Menjadi Berkat</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:31</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/9cf9bd6760cb7743978625c13b13e8a6b9b11959" data-title="Memuji Tuhan" data-album="Glory to God" data-cover="asset/albums/glory_to_god.jpg">
+                <button class="track-play-btn" aria-label="Play Memuji Tuhan" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">10.</span>
+                <span class="track-song-title">Memuji Tuhan</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">4:02</span>
+              </div>
+              <div class="track-row-item highlight-row" data-preview="https://p.scdn.co/mp3-preview/b12a49e0bd971c6624424337f580c3b00597cb13" data-title="Kerinduanku" data-album="Glory to God" data-cover="asset/albums/glory_to_god.jpg">
+                <button class="track-play-btn" aria-label="Play Kerinduanku" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">11.</span>
+                <span class="track-song-title">Kerinduanku</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">3:50</span>
+              </div>
+              <div class="track-row-item" data-preview="https://p.scdn.co/mp3-preview/25526026bb237f412c38c98bee5224e294a8293b" data-title="Heaven Rangers" data-album="Glory to God" data-cover="asset/albums/glory_to_god.jpg">
+                <button class="track-play-btn" aria-label="Play Heaven Rangers" title="Dengarkan Preview">
+                  <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <span class="equalizer-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+                </button>
+                <span class="track-number-digit">12.</span>
+                <span class="track-song-title">Heaven Rangers</span>
+                <span class="track-dots-leader"></span>
+                <span class="track-duration-time">2:15</span>
+              </div>
+            </div>
+
+            <!-- Bottom Floating Action Buttons -->
+            <div class="album-footer-actions">
+              <a href="https://open.spotify.com/album/27sElhRpFMKnMG1a31FjYo" target="_blank" rel="noopener noreferrer" class="circle-media-btn spotify-icon-circle" title="Dengarkan Album di Spotify" aria-label="Spotify">
+                <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.12-.779-.18-.899-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.301 1.021zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.38-1.32 9.78-.66 13.44 1.56.42.24.6.84.301 1.261zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.332-1.02 15.721 1.62.539.3.719 1.02.419 1.56-.3.54-1.02.72-1.56.42z"/></svg>
+              </a>
+              <a href="https://youtube.com/@joelkidsministry?si=W3_oBHQ2Awij22_t" target="_blank" rel="noopener noreferrer" class="circle-media-btn youtube-icon-circle" title="Tonton Video di YouTube" aria-label="YouTube">
+                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- ── Floating Mini Audio Player (Spotify Style) ── -->
+  <aside id="mini-audio-player" class="mini-audio-player" aria-hidden="true">
+    <div class="mini-player-container">
+      <div class="mini-player-track-info">
+        <img id="mini-player-thumb" src="asset/albums/faithful_god.jpg" alt="Now Playing Album" class="mini-player-thumb">
+        <div class="mini-player-text">
+          <span id="mini-player-title" class="mini-player-title">Pilih Lagu</span>
+          <span id="mini-player-album" class="mini-player-album">Joel Kids</span>
+        </div>
+      </div>
+
+      <div class="mini-player-controls">
+        <button id="mini-player-play-btn" class="mini-player-btn-circle" aria-label="Play or Pause">
+          <svg class="mini-play-svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg class="mini-pause-svg" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </button>
+        <div class="mini-player-timeline">
+          <div id="mini-player-progress" class="mini-player-progress-bar"></div>
+        </div>
+        <span class="mini-player-tag">30s PREVIEW</span>
+      </div>
+
+      <div class="mini-player-actions">
+        <a id="mini-player-spotify-link" href="https://open.spotify.com/artist/2fkKqUPPuAPJYJk21M85d6" target="_blank" rel="noopener noreferrer" class="mini-player-spotify-btn">
+          <svg viewBox="0 0 24 24" class="mini-spotify-svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.12-.779-.18-.899-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.301 1.021zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.38-1.32 9.78-.66 13.44 1.56.42.24.6.84.301 1.261zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.332-1.02 15.721 1.62.539.3.719 1.02.419 1.56-.3.54-1.02.72-1.56.42z"/></svg>
+          <span>Buka di Spotify</span>
+        </a>
+        <button id="mini-player-close-btn" class="mini-player-close" aria-label="Tutup Player">&times;</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand-col">
+        <div class="footer-brand">
+          <img src="asset/joelkids_logo.png" alt="Joel Kids Logo" class="footer-brand-logo" onerror="this.src='asset/icon.svg'">
+          <span class="footer-brand-name joelkids-rainbow-hook" aria-label="Joel Kids">
+            <span class="rainbow-letter" data-color="#ff3355">J</span><span class="rainbow-letter" data-color="#ff7a00">o</span><span class="rainbow-letter" data-color="#ffd200">e</span><span class="rainbow-letter" data-color="#00e676">l</span><span class="rainbow-space">&nbsp;</span><span class="rainbow-letter" data-color="#00d4c8">K</span><span class="rainbow-letter" data-color="#00a2ff">i</span><span class="rainbow-letter" data-color="#9d4edd">d</span><span class="rainbow-letter" data-color="#ff3399">s</span>
+          </span>
+        </div>
+        <p class="footer-tagline">
+          Generasi Emas Kristus yang berakar dalam firman, bertumbuh dalam kasih, dan berbuah lebat bagi kemuliaan Bapa.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Navigasi</h4>
+        <ul class="footer-nav-list">
+          <li><a href="index.html#about">Tentang Kita</a></li>
+          <li><a href="index.html#jadwal">Jadwal Ibadah</a></li>
+          <li><a href="index.html#banner-heroes">Banner Gods Heroes</a></li>
+          <li><a href="index.html#kelas">Kelas Gods Heroes</a></li>
+          <li><a href="index.html#social">Media Sosial</a></li>
+          <li><a href="album-lagu.html">Album Lagu Anak</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-affiliation-col">
+        <h4 class="footer-heading">Gereja Pengayom</h4>
+        <p class="affiliation-text">Pelayanan ini berada dibawah naungan resmi :</p>
+        <div class="church-badge">
+          <img src="asset/hte_logo.png" alt="Logo Gereja HTE" class="church-logo" onerror="this.style.display='none'">
+          <span class="church-name">GEREJA HTE</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <div class="bottom-container">
+        <p class="copyright-text">&copy; 2026 Joel Kids Ministry. All Rights Reserved.</p>
+        <button id="back-to-top" class="back-to-top-btn" aria-label="Kembali ke atas">
+          <span>Ke Atas</span>
+          <span class="top-arrow">↑</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Cinematic Video Theater Modal ──────────────────────── -->
+  <div id="video-modal" class="video-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Pemutar Video Joel Kids">
+    <div class="video-modal-backdrop" onclick="closeVideoModal()"></div>
+    <div class="video-modal-dialog">
+      <div class="video-modal-header">
+        <div class="video-modal-title-group">
+          <span id="video-modal-category" class="video-modal-category">// TAYANGAN JOEL KIDS</span>
+          <h3 id="video-modal-title" class="video-modal-title">Judul Video</h3>
+        </div>
+        <button class="video-modal-close" onclick="closeVideoModal()" aria-label="Tutup Video">&times;</button>
+      </div>
+      <div class="video-modal-body">
+        <video id="theater-video-player" controls preload="metadata" playsinline></video>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,3940 @@
+/* ==========================================================================
+   JOEL KIDS MINISTRY - MODERN UI/UX STYLESHEET
+   Synthesis of:
+   1. GMS Church (gms.church) - Boldness, Cinematic Vibe, Clean Typography & Modern Layouts
+   2. Joel Kids (joelkidsdataanak) - Multi-Depth Ocean Identity, Sunshine Gold & Ambient Imagery
+   ========================================================================== */
+
+/* ── 1. CSS Custom Properties / Design Tokens ────────────────────────────── */
+:root {
+  /* 🌊 Ocean Depth Color Palette (Joel Kids Identity) */
+  --ocean-top: #0055b8;          /* Surface bright ocean blue */
+  --ocean-mid: #0a7ec2;          /* Sunlit tropical blue */
+  --ocean-deep: #003d8f;         /* Royal marine blue */
+  --ocean-twilight: #002456;     /* Twilight deep water */
+  --ocean-midnight: #011638;     /* Midnight ocean navy */
+  --ocean-abyss: #000814;        /* Deep trench black-blue */
+
+  /* ✨ Accent Highlights */
+  --accent-gold: #f7d130;        /* Sunshine yellow / primary gold CTA */
+  --accent-gold-hover: #ffd700;  /* Bright gold hover */
+  --accent-gold-dark: #002b66;   /* Dark navy text on gold */
+  
+  --accent-cyan: #00d4c8;        /* Vivid aqua / cyan glow */
+  --accent-cyan-bright: #38bdf8; /* Sky cyan */
+  --accent-cyan-glow: rgba(0, 212, 200, 0.35);
+
+  --coral: #ff7f5e;              /* Marine coral */
+  --coral-pink: #ff6b9d;         /* Playful pink */
+  
+  /* 🪟 Glassmorphism & Surface Tokens */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-bg-hover: rgba(255, 255, 255, 0.14);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-border-hover: rgba(0, 212, 200, 0.5);
+  --card-shadow: 0 12px 36px rgba(0, 8, 20, 0.45);
+  --card-shadow-hover: 0 18px 48px rgba(0, 212, 200, 0.2);
+
+  /* ✍️ Typography & Text */
+  --font-family: 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --text-white: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.78);
+  --text-subtle: rgba(255, 255, 255, 0.55);
+
+  /* 🧭 Layout Tokens */
+  --navbar-height: 74px;
+  --max-width: 1380px;
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-pill: 9999px;
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ☀️ Light Mode Theme Tokens (Sunlit Ocean) */
+body.light-theme {
+  --ocean-top: #e0f2fe;
+  --ocean-mid: #bae6fd;
+  --ocean-deep: #7dd3fc;
+  --ocean-twilight: #38bdf8;
+  --ocean-midnight: #0284c7;
+  --ocean-abyss: #0369a1;
+
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-bg-hover: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(2, 132, 199, 0.25);
+  --glass-border-hover: rgba(2, 132, 199, 0.6);
+  --card-shadow: 0 10px 30px rgba(2, 60, 100, 0.12);
+  --card-shadow-hover: 0 16px 40px rgba(2, 132, 199, 0.22);
+
+  --text-white: #002b66;
+  --text-muted: #1e3a5f;
+  --text-subtle: #475569;
+}
+
+/* ── 2. Reset & Base Styles ──────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--navbar-height) + 20px);
+}
+
+body {
+  font-family: var(--font-family);
+  background: linear-gradient(180deg, 
+    var(--ocean-deep) 0%,
+    var(--ocean-top) 8%,
+    var(--ocean-mid) 18%,
+    var(--ocean-twilight) 35%,
+    var(--ocean-midnight) 58%,
+    var(--ocean-abyss) 100%
+  );
+  color: var(--text-white);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  transition: background 0.5s ease, color 0.3s ease;
+}
+
+/* ── 3. Rainbow Letter Interactive Hover Effect ──────────────────────────── */
+.joelkids-rainbow-hook {
+  display: inline-flex;
+  align-items: center;
+  cursor: default;
+  user-select: none;
+}
+
+.rainbow-letter {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              color 0.2s ease, 
+              text-shadow 0.25s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Tactile bounce and rainbow illumination on hover */
+.rainbow-letter:hover {
+  transform: translateY(-8px) scale(1.26);
+  z-index: 10;
+}
+
+.rainbow-space {
+  display: inline-block;
+  width: 7px;
+}
+
+/* 🌈 Rainbow Color Mapping per Letter */
+.rainbow-letter[data-color="#ff3355"]:hover, .rainbow-letter:nth-child(1):hover {
+  color: #ff3355 !important;
+  -webkit-text-fill-color: #ff3355 !important;
+  text-shadow: 0 0 18px rgba(255, 51, 85, 0.9), 0 0 35px rgba(255, 51, 85, 0.5);
+}
+
+.rainbow-letter[data-color="#ff7a00"]:hover, .rainbow-letter:nth-child(2):hover {
+  color: #ff7a00 !important;
+  -webkit-text-fill-color: #ff7a00 !important;
+  text-shadow: 0 0 18px rgba(255, 122, 0, 0.9), 0 0 35px rgba(255, 122, 0, 0.5);
+}
+
+.rainbow-letter[data-color="#ffd200"]:hover, .rainbow-letter:nth-child(3):hover {
+  color: #ffd200 !important;
+  -webkit-text-fill-color: #ffd200 !important;
+  text-shadow: 0 0 18px rgba(255, 210, 0, 0.9), 0 0 35px rgba(255, 210, 0, 0.5);
+}
+
+.rainbow-letter[data-color="#00e676"]:hover, .rainbow-letter:nth-child(4):hover {
+  color: #00e676 !important;
+  -webkit-text-fill-color: #00e676 !important;
+  text-shadow: 0 0 18px rgba(0, 230, 118, 0.9), 0 0 35px rgba(0, 230, 118, 0.5);
+}
+
+.rainbow-letter[data-color="#00d4c8"]:hover, .rainbow-letter:nth-child(5):hover, .rainbow-letter:nth-child(6):hover {
+  color: #00d4c8 !important;
+  -webkit-text-fill-color: #00d4c8 !important;
+  text-shadow: 0 0 18px rgba(0, 212, 200, 0.9), 0 0 35px rgba(0, 212, 200, 0.5);
+}
+
+.rainbow-letter[data-color="#00a2ff"]:hover, .rainbow-letter:nth-child(7):hover {
+  color: #00a2ff !important;
+  -webkit-text-fill-color: #00a2ff !important;
+  text-shadow: 0 0 18px rgba(0, 162, 255, 0.9), 0 0 35px rgba(0, 162, 255, 0.5);
+}
+
+.rainbow-letter[data-color="#9d4edd"]:hover, .rainbow-letter:nth-child(8):hover {
+  color: #9d4edd !important;
+  -webkit-text-fill-color: #9d4edd !important;
+  text-shadow: 0 0 18px rgba(157, 78, 221, 0.9), 0 0 35px rgba(157, 78, 221, 0.5);
+}
+
+.rainbow-letter[data-color="#ff3399"]:hover, .rainbow-letter:nth-child(9):hover {
+  color: #ff3399 !important;
+  -webkit-text-fill-color: #ff3399 !important;
+  text-shadow: 0 0 18px rgba(255, 51, 153, 0.9), 0 0 35px rgba(255, 51, 153, 0.5);
+}
+
+/* ── 4. Ambient Underwater Visual Decor ──────────────────────────────────── */
+.ocean-sunrays {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ray {
+  position: absolute;
+  top: -150px;
+  width: 380px;
+  height: 120vh;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(0, 212, 200, 0.04) 60%, transparent 100%);
+  filter: blur(40px);
+  transform-origin: top center;
+  pointer-events: none;
+}
+
+.ray-1 { left: 8%; transform: rotate(18deg); animation: pulseRay 10s ease-in-out infinite alternate; }
+.ray-2 { left: 45%; transform: rotate(-5deg); animation: pulseRay 14s ease-in-out infinite alternate 2s; }
+.ray-3 { right: 12%; transform: rotate(-22deg); animation: pulseRay 12s ease-in-out infinite alternate 1s; }
+
+@keyframes pulseRay {
+  0% { opacity: 0.4; }
+  100% { opacity: 0.85; }
+}
+
+.ocean-bubbles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-bubble {
+  position: absolute;
+  bottom: -40px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.15) 60%, rgba(0, 212, 200, 0.25) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  animation: floatBubbleUp linear infinite;
+  box-shadow: 0 0 10px rgba(0, 212, 200, 0.2);
+}
+
+@keyframes floatBubbleUp {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.8);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-50vh) translateX(25px) scale(1);
+    opacity: 0.7;
+  }
+  85% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-105vh) translateX(-20px) scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* ── 5. Modern Frosted Glass Sticky Navbar (GMS Style) ───────────────────── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--navbar-height);
+  background: rgba(1, 22, 56, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  z-index: 1000;
+  transition: var(--transition-smooth);
+}
+
+body.light-theme .navbar {
+  background: rgba(255, 255, 255, 0.82);
+  border-bottom: 1px solid rgba(2, 132, 199, 0.18);
+}
+
+.navbar.scrolled {
+  background: rgba(0, 8, 20, 0.9);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  border-bottom-color: rgba(0, 212, 200, 0.3);
+}
+
+body.light-theme .navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px rgba(2, 60, 100, 0.15);
+}
+
+.nav-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--text-white);
+  transition: transform 0.2s ease;
+}
+
+.nav-brand:hover {
+  transform: translateY(-1px);
+}
+
+.logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 212, 200, 0.35));
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-title {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: var(--text-white);
+}
+
+.brand-sub {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--accent-gold);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+
+.nav-link {
+  color: var(--text-white);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 8px 13px;
+  border-radius: var(--radius-pill);
+  transition: var(--transition-smooth);
+  opacity: 0.88;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.14);
+  opacity: 1;
+  color: var(--accent-cyan);
+}
+
+body.light-theme .nav-link:hover {
+  background: rgba(2, 132, 199, 0.12);
+  color: #0284c7;
+}
+
+.nav-highlight {
+  background: rgba(247, 209, 48, 0.16);
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold) !important;
+  opacity: 1;
+}
+
+.nav-highlight:hover {
+  background: var(--accent-gold) !important;
+  color: var(--accent-gold-dark) !important;
+  box-shadow: 0 0 16px var(--accent-gold);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: var(--text-white);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+  border-color: var(--accent-cyan);
+}
+
+.mobile-toggle-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger-bar {
+  width: 24px;
+  height: 2.5px;
+  background-color: var(--text-white);
+  border-radius: 2px;
+  transition: var(--transition-smooth);
+}
+
+.mobile-toggle-btn.active .hamburger-bar:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+.mobile-toggle-btn.active .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+.mobile-toggle-btn.active .hamburger-bar:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* ── 6. Cinematic Hero Section ───────────────────────────────────────────── */
+.hero-section {
+  position: relative;
+  z-index: 1;
+  padding-top: calc(var(--navbar-height) + 60px);
+  padding-bottom: 80px;
+  min-height: calc(100vh - var(--navbar-height));
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 212, 200, 0.15);
+  border: 1.5px solid rgba(0, 212, 200, 0.45);
+  color: var(--accent-cyan);
+  padding: 8px 20px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  box-shadow: 0 0 20px rgba(0, 212, 200, 0.2);
+}
+
+body.light-theme .hero-badge {
+  background: rgba(2, 132, 199, 0.12);
+  border-color: rgba(2, 132, 199, 0.4);
+  color: #0284c7;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent-gold);
+  box-shadow: 0 0 10px var(--accent-gold);
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 6.5vw, 4.4rem);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.hero-subtitle {
+  font-size: clamp(16px, 2.2vw, 19px);
+  color: var(--text-muted);
+  max-width: 720px;
+  line-height: 1.7;
+  margin-bottom: 36px;
+  font-weight: 600;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 30px;
+  border-radius: var(--radius-pill);
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-gold) 0%, #ffbe1a 100%);
+  color: var(--accent-gold-dark);
+  box-shadow: 0 6px 20px var(--accent-gold-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 28px rgba(247, 209, 48, 0.55);
+}
+
+.btn-glass {
+  background: var(--glass-bg);
+  color: var(--text-white);
+  border: 1.5px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+}
+
+.btn-glass:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--accent-cyan);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 212, 200, 0.25);
+  color: var(--accent-cyan);
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.hero-metrics {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  padding: 16px 36px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--card-shadow);
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.metric-number {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--accent-gold);
+  line-height: 1.1;
+}
+
+.metric-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metric-divider {
+  width: 1px;
+  height: 32px;
+  background-color: var(--glass-border);
+}
+
+/* ── 7. Infinite Vision Marquee Banner (GMS Style) ───────────────────────── */
+.vision-marquee-section {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  background: linear-gradient(90deg, #f7d130 0%, #ffbe1a 50%, #f7d130 100%);
+  color: #002b66;
+  padding: 14px 0;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scrollMarquee 34s linear infinite;
+  pointer-events: none;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.marquee-badge {
+  background-color: #002b66;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin: 0 12px;
+  letter-spacing: 0.5px;
+}
+
+.marquee-text {
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.marquee-star {
+  font-size: 16px;
+  margin: 0 18px;
+  color: rgba(0, 43, 102, 0.6);
+}
+
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── 8. Gods Heroes 3D Niche Alcove Banner Section ───────────────────────── */
+.gods-heroes-fullwidth {
+  width: 100%;
+  margin: 70px 0 100px;
+  position: relative;
+  z-index: 2;
+  overflow: visible;
+}
+
+.banner-section-header {
+  text-align: center;
+  max-width: var(--max-width);
+  margin: 0 auto 34px;
+  padding: 0 24px;
+}
+
+/* 3D Recessed Niche / Alcove Chamber */
+.gods-heroes-container {
+  position: relative;
+  width: 100%;
+  min-height: 620px;
+  perspective: 1400px;
+  perspective-origin: 50% 45%;
+  background: radial-gradient(ellipse 70% 50% at 50% 12%, rgba(0, 212, 200, 0.28) 0%, rgba(0, 14, 32, 0.96) 65%), 
+              linear-gradient(180deg, #001f3f 0%, #000c1a 100%);
+  border-bottom: 4px solid var(--accent-gold);
+  box-shadow: inset 0 35px 70px rgba(0, 0, 0, 0.9), 
+              inset 0 -35px 70px rgba(0, 0, 0, 0.95), 
+              inset 0 0 120px rgba(0, 212, 200, 0.16),
+              0 24px 60px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible; /* 🚀 Crucial: Allows selected banner to break the border and pass above the line */
+  padding: 55px 0 65px;
+}
+
+/* 🚀 Top Cyan Neon Rail Line (Layered at z-index: 2 so selected banner at z-index: 200 passes OVER it) */
+.gods-heroes-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 16px var(--accent-cyan), 0 0 32px var(--accent-cyan-glow);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* 3D Niche Floor Pedestal Reflection */
+.gods-heroes-container::after {
+  content: '';
+  position: absolute;
+  bottom: 28px;
+  left: 6%;
+  width: 88%;
+  height: 28px;
+  background: radial-gradient(ellipse at 50% 50%, rgba(0, 212, 200, 0.35) 0%, rgba(247, 209, 48, 0.15) 50%, transparent 80%);
+  filter: blur(10px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.main-banner {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.12;
+  filter: blur(5px) saturate(1.6);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  clip-path: inset(0 0 0 0); /* Keeps backdrop strictly inside the container */
+}
+
+.gods-heroes-container:hover .main-banner {
+  transform: scale(1.03);
+}
+
+.small-banners-overlay {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 24px;
+  padding: 20px 24px;
+  flex-wrap: wrap;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+.small-banner-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  position: relative;
+  z-index: 10;
+  transition: opacity 0.35s ease, filter 0.35s ease;
+}
+
+/* 3D Rotating Card Container */
+.banner-3d-card {
+  position: relative;
+  border-radius: 18px;
+  transform-style: preserve-3d;
+  transition: box-shadow 0.3s ease, filter 0.3s ease;
+  will-change: transform;
+}
+
+/* Default Natural Niche Curved Arc (Resting Amphitheater Stance) */
+.small-banner-item:nth-child(1) .banner-3d-card { transform: rotateY(12deg); }
+.small-banner-item:nth-child(2) .banner-3d-card { transform: rotateY(6deg); }
+.small-banner-item:nth-child(3) .banner-3d-card { transform: rotateY(2deg); }
+.small-banner-item:nth-child(4) .banner-3d-card { transform: rotateY(-2deg); }
+.small-banner-item:nth-child(5) .banner-3d-card { transform: rotateY(-6deg); }
+.small-banner-item:nth-child(6) .banner-3d-card { transform: rotateY(-12deg); }
+
+/* Glare & Specular Light Reflection */
+.banner-glare-effect {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  mix-blend-mode: overlay;
+}
+
+.small-banner-img {
+  width: auto;
+  height: 440px;
+  max-height: 470px;
+  object-fit: contain;
+  border-radius: 18px;
+  border: 4px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7), 
+              0 0 30px rgba(0, 212, 200, 0.3);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background: transparent;
+  display: block;
+}
+
+.small-banner-caption {
+  font-size: 13px;
+  font-weight: 900;
+  color: #ffffff;
+  background: rgba(0, 15, 35, 0.92);
+  padding: 7px 18px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(0, 212, 200, 0.7);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  transform: translateZ(25px);
+}
+
+/* 🚀 Selected / Hovered Banner Gets Big & Breaks Border Above the Line */
+.small-banner-item:hover,
+.small-banner-item.banner-selected {
+  z-index: 200 !important; /* Layers above the cyan border line (z-index: 2) and all sibling items */
+}
+
+.small-banner-item:hover .banner-3d-card,
+.small-banner-item.banner-selected .banner-3d-card {
+  z-index: 200 !important;
+}
+
+.small-banner-item:hover .small-banner-img,
+.small-banner-item.banner-selected .small-banner-img {
+  border-color: var(--accent-gold);
+  border-width: 3.5px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 
+              0 0 24px var(--accent-gold), 
+              0 0 40px rgba(0, 212, 200, 0.5);
+}
+
+.small-banner-item:hover .small-banner-caption,
+.small-banner-item.banner-selected .small-banner-caption {
+  background: linear-gradient(135deg, var(--accent-gold) 0%, #ffbe1a 100%);
+  color: #002b66;
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 20px var(--accent-gold);
+  transform: translateZ(35px) scale(1.04);
+}
+
+/* Dim non-hovered siblings for spotlight prominence */
+.small-banners-overlay:hover .small-banner-item:not(:hover) {
+  opacity: 0.68;
+  filter: brightness(0.78);
+}
+
+.small-banners-overlay:hover .small-banner-item:hover {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* ── 9. Page Content Wrapper & Section Headers ───────────────────────────── */
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.page-section {
+  margin-bottom: 90px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-gold);
+  background: rgba(247, 209, 48, 0.08);
+  border: 1px solid rgba(247, 209, 48, 0.28);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 12px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+body.light-theme .section-tag {
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.08);
+  border-color: rgba(2, 132, 199, 0.25);
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  color: var(--text-white);
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 580px;
+}
+
+.section-line {
+  width: 54px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent-gold) 0%, var(--accent-cyan) 100%);
+  margin-top: 14px;
+  box-shadow: 0 0 12px var(--accent-cyan-glow);
+}
+
+/* ── 10. Tentang Kami (About Us Card) ────────────────────────────────────── */
+.about-grid {
+  display: flex;
+  justify-content: center;
+}
+
+.main-about-card {
+  position: relative;
+  background: var(--glass-bg);
+  border: 1.5px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-xl);
+  padding: 44px;
+  max-width: 860px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.main-about-card:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.about-badge {
+  display: inline-block;
+  background: rgba(247, 209, 48, 0.15);
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 20px;
+}
+
+.about-headline {
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 900;
+  margin-bottom: 18px;
+  line-height: 1.35;
+  color: var(--text-white);
+}
+
+.about-description {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.about-features {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+}
+
+body.light-theme .feature-item {
+  background: rgba(2, 132, 199, 0.08);
+  border-color: rgba(2, 132, 199, 0.2);
+}
+
+.feature-icon {
+  font-size: 18px;
+}
+
+.feature-text {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-white);
+}
+
+/* ── 11. Jadwal Ibadah (Schedule Event Cards) ────────────────────────────── */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.schedule-card {
+  position: relative;
+  background: var(--glass-bg);
+  border: 1.5px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-smooth);
+}
+
+.schedule-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-cyan);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.card-top-tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.session-badge {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.badge-impact {
+  background: rgba(0, 212, 200, 0.2);
+  color: var(--accent-cyan);
+  border: 1px solid var(--accent-cyan);
+}
+
+.badge-revival {
+  background: rgba(247, 209, 48, 0.2);
+  color: var(--accent-gold);
+  border: 1px solid var(--accent-gold);
+}
+
+.badge-fire {
+  background: rgba(255, 127, 94, 0.2);
+  color: var(--coral);
+  border: 1px solid var(--coral);
+}
+
+.badge-online {
+  background: rgba(255, 0, 0, 0.2);
+  color: #ff4d4d;
+  border: 1px solid #ff4d4d;
+}
+
+.time-chip {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-muted);
+}
+
+.live-chip {
+  color: #ff4d4d;
+  font-weight: 900;
+  animation: pulseLive 1.5s infinite;
+}
+
+@keyframes pulseLive {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.card-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  transition: transform 0.3s ease;
+}
+
+.schedule-card:hover .card-icon-wrap {
+  transform: scale(1.1) rotate(4deg);
+}
+
+.icon-impact {
+  background: linear-gradient(135deg, rgba(0, 212, 200, 0.3) 0%, rgba(0, 85, 184, 0.3) 100%);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 200, 0.5);
+}
+
+.icon-revival {
+  background: linear-gradient(135deg, rgba(247, 209, 48, 0.3) 0%, rgba(255, 127, 94, 0.3) 100%);
+  color: var(--accent-gold);
+  border: 1px solid rgba(247, 209, 48, 0.5);
+}
+
+.icon-fire {
+  background: linear-gradient(135deg, rgba(255, 127, 94, 0.3) 0%, rgba(255, 95, 95, 0.3) 100%);
+  color: var(--coral);
+  border: 1px solid rgba(255, 127, 94, 0.5);
+}
+
+.icon-online {
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.25) 0%, rgba(200, 0, 0, 0.25) 100%);
+  color: #ff3333;
+  border: 1px solid rgba(255, 0, 0, 0.5);
+}
+
+.svg-icon {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+.schedule-service-name {
+  font-size: 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.3px;
+  margin-bottom: 8px;
+  color: var(--text-white);
+}
+
+.schedule-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 22px;
+  flex-grow: 1;
+}
+
+.schedule-timing-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.18);
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.light-theme .schedule-timing-list {
+  background: rgba(2, 132, 199, 0.08);
+  border-color: rgba(2, 132, 199, 0.15);
+}
+
+.timing-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.timing-target {
+  font-weight: 800;
+  color: var(--text-white);
+}
+
+.timing-val {
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+body.light-theme .timing-val {
+  color: #0284c7;
+}
+
+.btn-yt-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ff0000;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 12px 20px;
+  border-radius: var(--radius-pill);
+  margin-top: 14px;
+  box-shadow: 0 4px 14px rgba(255, 0, 0, 0.35);
+  transition: var(--transition-smooth);
+}
+
+.btn-yt-card:hover {
+  background: #cc0000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5);
+}
+
+/* ── 12. Gods Heroes (Kategori & Kelas Anak dengan Banner Masing-Masing) ─── */
+.heroes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.hero-class-card {
+  background: var(--glass-bg);
+  border: 1.5px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px 28px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transition-smooth);
+}
+
+.hero-class-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-gold);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* Class Banner Thumbnail in Card */
+.class-banner-thumb-wrap {
+  width: 100%;
+  height: 290px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 18px;
+  cursor: pointer;
+  background: rgba(0, 15, 30, 0.45);
+  border: 1.5px solid var(--glass-border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.class-banner-thumb-wrap:hover {
+  border-color: var(--accent-gold);
+  box-shadow: 0 10px 32px var(--accent-cyan-glow);
+}
+
+.class-banner-thumb {
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+}
+
+.class-banner-thumb-wrap:hover .class-banner-thumb {
+  transform: scale(1.06);
+}
+
+.banner-expand-btn {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  opacity: 0.9;
+  transition: var(--transition-smooth);
+}
+
+.class-banner-thumb-wrap:hover .banner-expand-btn {
+  background: var(--accent-gold);
+  color: var(--accent-gold-dark);
+  border-color: var(--accent-gold);
+}
+
+.class-avatar-badge {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.hero-class-card:hover .class-avatar-badge {
+  transform: scale(1.15) rotate(-6deg);
+}
+
+.avatar-batita { background: linear-gradient(135deg, #ffd1dc 0%, #ff6b9d 100%); }
+.avatar-balita { background: linear-gradient(135deg, #fed7aa 0%, #fb923c 100%); }
+.avatar-faith  { background: linear-gradient(135deg, #bae6fd 0%, #0284c7 100%); }
+.avatar-hope   { background: linear-gradient(135deg, #a7f3d0 0%, #059669 100%); }
+.avatar-prayer { background: linear-gradient(135deg, #7dd3fc 0%, #0284c7 100%); }
+.avatar-heroes { background: linear-gradient(135deg, #e9d5ff 0%, #9333ea 100%); }
+
+.class-age {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-cyan);
+  background: rgba(0, 212, 200, 0.12);
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 10px;
+}
+
+body.light-theme .class-age {
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.12);
+}
+
+.class-title {
+  font-size: 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.3px;
+  margin-bottom: 8px;
+  color: var(--text-white);
+}
+
+.class-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.card-featured-heroes {
+  border-color: var(--accent-gold);
+  background: linear-gradient(180deg, rgba(247, 209, 48, 0.1) 0%, var(--glass-bg) 100%);
+}
+
+/* ── 13. Media Sosial Hub ────────────────────────────────────────────────── */
+.social-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.social-hub-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--glass-bg);
+  border: 1.5px solid var(--glass-border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 18px 22px;
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: var(--text-white);
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-smooth);
+}
+
+.social-hub-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.social-hub-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.social-hub-card:hover .social-hub-icon-wrap {
+  transform: scale(1.12);
+}
+
+.social-svg-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.social-hub-meta {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.social-platform {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-subtle);
+}
+
+.social-handle {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-white);
+}
+
+.social-arrow {
+  font-size: 18px;
+  font-weight: 900;
+  opacity: 0.6;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.social-hub-card:hover .social-arrow {
+  transform: translate(3px, -3px);
+  opacity: 1;
+}
+
+.card-yt:hover { border-color: #ff0000; box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3); }
+.card-yt .social-svg-icon { color: #ff0000; }
+
+.card-ig:hover { border-color: #e4405f; box-shadow: 0 10px 30px rgba(228, 64, 95, 0.3); }
+.card-ig .social-svg-icon { color: #e4405f; }
+
+.card-spotify:hover { border-color: #1db954; box-shadow: 0 10px 30px rgba(29, 185, 84, 0.3); }
+.card-spotify .social-svg-icon { color: #1db954; }
+
+.card-tiktok:hover { border-color: var(--accent-cyan); box-shadow: 0 10px 30px rgba(0, 212, 200, 0.3); }
+.card-tiktok .social-svg-icon { color: #ffffff; }
+body.light-theme .card-tiktok .social-svg-icon { color: #000000; }
+
+/* ── 14. Modern Multi-Column Church Footer (GMS Style) ───────────────────── */
+.site-footer {
+  position: relative;
+  z-index: 2;
+  background-color: #000814;
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin-top: auto;
+}
+
+body.light-theme .site-footer {
+  background-color: #011638;
+}
+
+.footer-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 60px 24px 40px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  gap: 48px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.footer-brand-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-brand-name {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: var(--accent-cyan);
+}
+
+.footer-tagline {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 400px;
+}
+
+.footer-heading {
+  font-size: 15px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-gold);
+  margin-bottom: 20px;
+}
+
+.footer-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-nav-list a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.footer-nav-list a:hover {
+  color: var(--accent-cyan);
+  transform: translateX(4px);
+}
+
+.affiliation-text {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.church-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 12px 20px;
+  border-radius: var(--radius-lg);
+}
+
+.church-logo {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+}
+
+.church-name {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.footer-bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 20px 24px;
+  background-color: #00040a;
+}
+
+.bottom-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.copyright-text {
+  font-size: 13px;
+  color: var(--text-subtle);
+  font-weight: 600;
+}
+
+.back-to-top-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-white);
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.back-to-top-btn:hover {
+  background: var(--accent-gold);
+  color: var(--accent-gold-dark);
+  transform: translateY(-2px);
+}
+
+/* ── 15. Interactive Banner Modal Lightbox ───────────────────────────────── */
+.banner-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.banner-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.banner-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 4, 15, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.banner-modal-dialog {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(135deg, rgba(1, 22, 56, 0.96) 0%, rgba(0, 8, 20, 0.98) 100%);
+  border: 2px solid var(--accent-cyan);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 30px var(--accent-cyan-glow);
+  border-radius: var(--radius-xl);
+  padding: 24px 28px;
+  max-width: 440px;
+  max-height: 92vh;
+  overflow-y: auto;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(0.92);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.banner-modal.open .banner-modal-dialog {
+  transform: scale(1);
+}
+
+.banner-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 32px;
+  color: var(--text-white);
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.2s ease, color 0.2s ease;
+  z-index: 10;
+}
+
+.banner-modal-close:hover {
+  color: var(--accent-gold);
+  transform: scale(1.2);
+}
+
+.modal-header-info {
+  margin-bottom: 12px;
+}
+
+.modal-tag {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+}
+
+.modal-banner-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--text-white);
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+.modal-banner-img-wrap {
+  width: 100%;
+  max-height: 65vh;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.4);
+  margin-bottom: 18px;
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.modal-banner-img {
+  max-height: 58vh;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
+}
+
+/* ── 16. Responsive Media Queries ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+  .footer-affiliation-col {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 820px) {
+  .mobile-toggle-btn {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: var(--navbar-height);
+    right: -100%;
+    width: 280px;
+    height: calc(100vh - var(--navbar-height));
+    background: rgba(1, 22, 56, 0.96);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-left: 1px solid var(--glass-border);
+    padding: 32px 24px;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  body.light-theme .nav-menu {
+    background: rgba(255, 255, 255, 0.98);
+  }
+
+  .nav-menu.open {
+    right: 0;
+  }
+
+  .nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .nav-link {
+    width: 100%;
+    padding: 12px 18px;
+    font-size: 16px;
+  }
+
+  .hero-metrics {
+    flex-direction: column;
+    gap: 16px;
+    border-radius: var(--radius-lg);
+    padding: 20px 32px;
+  }
+
+  .metric-divider {
+    width: 80%;
+    height: 1px;
+  }
+
+  .small-banners-overlay {
+    gap: 16px;
+    padding: 24px 20px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+
+  .small-banner-item {
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+
+  .small-banner-img {
+    height: 360px;
+    max-height: 380px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-affiliation-col {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .small-banners-overlay {
+    gap: 14px;
+    padding: 20px 16px;
+  }
+
+  .small-banner-img {
+    height: 320px;
+    max-height: 340px;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .main-about-card {
+    padding: 28px 20px;
+  }
+
+  .about-features {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .feature-item {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .schedule-grid, .heroes-grid, .social-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ── 15. Album Showcase Card Layout (Exact Mockup Design) ────────────────── */
+.album-hero-header {
+  padding-top: calc(var(--navbar-height) + 40px);
+  padding-bottom: 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.album-hero-header .hero-title {
+  font-size: clamp(2.6rem, 8.5vw, 5.6rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -1.2px;
+  margin-top: 6px;
+  margin-bottom: 22px;
+}
+
+.album-showcase-container {
+  max-width: 980px;
+  margin: 48px auto 96px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+/* ── Spotify Verified Artist Badge (Header) ── */
+.spotify-artist-badge-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.spotify-verified-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(29, 185, 84, 0.12);
+  border: 1px solid rgba(29, 185, 84, 0.45);
+  color: #1ed760;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(29, 185, 84, 0.2);
+}
+
+.spotify-chip-icon {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
+
+.spotify-follow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #1db954;
+  color: #000000;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 18px rgba(29, 185, 84, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.spotify-follow-pill:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 24px rgba(29, 185, 84, 0.65);
+}
+
+.spotify-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #000000;
+  animation: pulseLive 1.4s infinite;
+}
+
+/* ── Album Showcase Card (Color Theory & Deep Ocean Glassmorphism) ── */
+.album-showcase-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(8, 28, 54, 0.84) 0%, rgba(3, 16, 32, 0.94) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 28px;
+  padding: 34px 38px 28px 34px;
+  box-shadow: 0 20px 50px rgba(0, 8, 24, 0.6), 0 0 35px var(--album-glow, rgba(0, 212, 200, 0.14)), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  border: 1.5px solid rgba(0, 212, 200, 0.28);
+  border-top-color: rgba(255, 255, 255, 0.45);
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  gap: 40px;
+  align-items: start;
+  transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  overflow: visible !important; /* Allow vinyl to peek out gracefully */
+}
+
+/* Chromatic Resonance per Album (Color Theory) */
+#album-1 {
+  --album-accent: #00d4c8;
+  --album-glow: rgba(0, 212, 200, 0.22);
+  background-image: radial-gradient(ellipse 550px 320px at 12% 25%, rgba(0, 212, 200, 0.14), transparent 70%), linear-gradient(145deg, rgba(8, 28, 54, 0.85) 0%, rgba(3, 16, 32, 0.95) 100%);
+}
+
+#album-2 {
+  --album-accent: #f7d130;
+  --album-glow: rgba(247, 209, 48, 0.2);
+  background-image: radial-gradient(ellipse 550px 320px at 12% 25%, rgba(247, 209, 48, 0.12), transparent 70%), linear-gradient(145deg, rgba(8, 28, 54, 0.85) 0%, rgba(3, 16, 32, 0.95) 100%);
+}
+
+#album-3 {
+  --album-accent: #ff9e00;
+  --album-glow: rgba(255, 158, 0, 0.2);
+  background-image: radial-gradient(ellipse 550px 320px at 12% 25%, rgba(255, 158, 0, 0.12), transparent 70%), linear-gradient(145deg, rgba(8, 28, 54, 0.85) 0%, rgba(3, 16, 32, 0.95) 100%);
+}
+
+#album-4 {
+  --album-accent: #38bdf8;
+  --album-glow: rgba(56, 189, 248, 0.22);
+  background-image: radial-gradient(ellipse 550px 320px at 12% 25%, rgba(56, 189, 248, 0.14), transparent 70%), linear-gradient(145deg, rgba(8, 28, 54, 0.85) 0%, rgba(3, 16, 32, 0.95) 100%);
+}
+
+.album-showcase-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 65px rgba(0, 8, 24, 0.75), 0 0 45px var(--album-glow, rgba(0, 212, 200, 0.28)), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  border-color: var(--album-accent, rgba(0, 212, 200, 0.5));
+}
+
+/* ── Interactive Vinyl Record & Album Cover Sleeve ── */
+.album-cover-box {
+  position: relative;
+  width: 270px;
+  height: 270px;
+  border-radius: 20px;
+  cursor: pointer;
+  user-select: none;
+  perspective: 1000px;
+}
+
+.album-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 2.5px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 16px 36px rgba(0, 20, 40, 0.55);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease;
+  display: block;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Vinyl Disc (High-End Realistic Micro-Grooves & Anisotropic Sheen) */
+.vinyl-disc {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: 
+    /* Anisotropic Dual Conical Light Sheen (Simulates real studio vinyl reflection) */
+    conic-gradient(
+      from 45deg,
+      rgba(255, 255, 255, 0.15) 0deg,
+      transparent 55deg,
+      rgba(255, 255, 255, 0.12) 110deg,
+      transparent 180deg,
+      rgba(255, 255, 255, 0.15) 225deg,
+      transparent 290deg,
+      rgba(255, 255, 255, 0.12) 340deg,
+      transparent 360deg
+    ),
+    /* Micro-Grooves Texture */
+    repeating-radial-gradient(
+      circle,
+      #111111 0px,
+      #111111 2px,
+      #1e1e1e 2.5px,
+      #0d0d0d 3.5px,
+      #161616 4.5px
+    );
+  border: 2px solid #222222;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.3);
+  z-index: 1;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.vinyl-grooves {
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.09);
+  box-shadow: 
+    inset 0 0 0 16px rgba(0, 0, 0, 0.45), 
+    inset 0 0 0 32px rgba(255, 255, 255, 0.03),
+    inset 0 0 0 54px rgba(0, 0, 0, 0.4);
+}
+
+.vinyl-center-label {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 2.5px solid var(--accent-gold);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.9), 0 0 12px rgba(247, 209, 48, 0.35);
+  position: relative;
+  z-index: 2;
+  transition: box-shadow 0.35s ease;
+}
+
+.vinyl-center-label::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #000000;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.9);
+}
+
+/* On Cover Hover: Sleeve tilts & Vinyl glides out smoothly */
+.album-cover-box:hover .album-cover-img {
+  transform: translateX(-16px) rotateY(-8deg) translateZ(0);
+  box-shadow: -14px 28px 48px rgba(0, 10, 25, 0.7);
+}
+
+.album-cover-box:hover .vinyl-disc {
+  transform: translateX(105px) rotate(140deg) translateZ(0);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 212, 200, 0.25);
+}
+
+/* 🚀 Active Turntable Playback: Vinyl Slides Out & Spins Continuously! */
+.album-showcase-card.is-playing .vinyl-disc,
+.album-cover-box.is-playing .vinyl-disc {
+  transform: translateX(65px) rotate(0deg) translateZ(0);
+  animation: vinylPlayingSpin 3.2s linear infinite;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.85), 0 0 30px var(--accent-cyan-glow);
+}
+
+.album-showcase-card.is-playing .vinyl-center-label,
+.album-cover-box.is-playing .vinyl-center-label {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(0, 212, 200, 0.6);
+}
+
+.album-showcase-card.is-playing .album-cover-box:hover .vinyl-disc,
+.album-cover-box.is-playing:hover .vinyl-disc {
+  animation: vinylPlayingSpinHover 3.2s linear infinite;
+}
+
+@keyframes vinylPlayingSpin {
+  from { transform: translateX(65px) rotate(0deg) translateZ(0); }
+  to { transform: translateX(65px) rotate(360deg) translateZ(0); }
+}
+
+@keyframes vinylPlayingSpinHover {
+  from { transform: translateX(110px) rotate(0deg) translateZ(0); }
+  to { transform: translateX(110px) rotate(360deg) translateZ(0); }
+}
+
+
+/* ── Album Tracklist Header & Metadata ── */
+.album-tracklist-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.album-header-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.12);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.album-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.album-pill-badge {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--album-accent, var(--accent-cyan));
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+  width: fit-content;
+}
+
+.album-card-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.album-spotify-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(8px);
+  transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.album-spotify-link-btn:hover {
+  background: #1db954;
+  color: #000000;
+  border-color: #1db954;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(29, 185, 84, 0.45);
+}
+
+.btn-spotify-svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
+
+/* ── Track Rows with Audio Preview ── */
+.album-tracks-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+}
+
+.track-row-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 12px;
+  border-radius: 10px;
+  transition: background 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.track-row-item.highlight-row {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.track-row-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateX(5px);
+}
+
+.track-row-item.is-playing {
+  background: linear-gradient(90deg, rgba(29, 185, 84, 0.24) 0%, rgba(0, 212, 200, 0.16) 100%) !important;
+  border-color: rgba(29, 185, 84, 0.5) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  transform: translateX(8px);
+}
+
+.track-play-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--album-accent, var(--accent-cyan));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.track-row-item:hover .track-play-btn {
+  background: #1db954;
+  color: #ffffff;
+  transform: scale(1.15);
+}
+
+.track-play-btn svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+
+.track-play-btn .pause-icon {
+  display: none;
+}
+
+.track-play-btn .equalizer-bars {
+  display: none;
+}
+
+/* Playing State on Row */
+.track-row-item.is-playing .track-play-btn {
+  background: #1db954;
+  color: #ffffff;
+}
+
+.track-row-item.is-playing .track-play-btn .play-icon {
+  display: none;
+}
+
+.track-row-item.is-playing .track-play-btn .equalizer-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.equalizer-bars .bar {
+  width: 2.5px;
+  background: currentColor;
+  border-radius: 1px;
+  animation: eqBounce 0.8s ease-in-out infinite alternate;
+}
+
+.equalizer-bars .bar:nth-child(1) { height: 6px; animation-delay: 0.1s; }
+.equalizer-bars .bar:nth-child(2) { height: 12px; animation-delay: 0.3s; }
+.equalizer-bars .bar:nth-child(3) { height: 8px; animation-delay: 0.2s; }
+
+@keyframes eqBounce {
+  0% { height: 3px; }
+  100% { height: 12px; }
+}
+
+.track-number-digit {
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--album-accent, var(--accent-cyan));
+  width: 26px;
+  flex-shrink: 0;
+}
+
+.track-song-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f1f5f9;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.track-row-item.is-playing .track-song-title {
+  color: #ffffff;
+  font-weight: 900;
+  text-shadow: 0 0 12px rgba(29, 185, 84, 0.4);
+}
+
+.track-dots-leader {
+  flex: 1;
+  height: 1px;
+  margin: 0 12px;
+  border-bottom: 2px dotted rgba(255, 255, 255, 0.2);
+  align-self: center;
+}
+
+.track-duration-time {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.72);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.track-row-item.is-playing .track-duration-time {
+  color: #1ed760;
+  font-weight: 800;
+}
+
+.album-footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.circle-media-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background-color 0.2s ease;
+  text-decoration: none;
+}
+
+.circle-media-btn:hover {
+  transform: scale(1.18) translateY(-2px);
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.circle-media-btn svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.spotify-icon-circle svg {
+  fill: #1db954;
+}
+
+.youtube-icon-circle svg {
+  fill: #ff0000;
+}
+
+/* Light Theme Support for Album Showcase */
+body.light-theme .album-showcase-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(228, 248, 252, 0.9) 100%);
+  border-color: rgba(0, 160, 200, 0.35);
+  border-top-color: #ffffff;
+  box-shadow: 0 16px 45px rgba(0, 60, 120, 0.14), 0 0 24px rgba(0, 212, 200, 0.12);
+}
+
+body.light-theme .album-header-meta {
+  border-bottom-color: rgba(0, 43, 102, 0.15);
+}
+
+body.light-theme .album-card-title {
+  color: #002b66;
+}
+
+body.light-theme .track-song-title {
+  color: #0f2942;
+}
+
+body.light-theme .track-duration-time {
+  color: #334e68;
+}
+
+body.light-theme .track-dots-leader {
+  border-bottom-color: rgba(0, 43, 102, 0.2);
+}
+
+body.light-theme .track-row-item.highlight-row {
+  background: rgba(0, 180, 216, 0.08);
+}
+
+body.light-theme .track-row-item:hover {
+  background: rgba(0, 180, 216, 0.18);
+}
+
+body.light-theme .track-row-item.is-playing {
+  background: #ffffff !important;
+  box-shadow: 0 4px 18px rgba(0, 50, 100, 0.18);
+}
+
+body.light-theme .track-row-item.is-playing .track-song-title {
+  color: #002b66;
+}
+
+body.light-theme .circle-media-btn {
+  background: #ffffff;
+  border-color: rgba(0, 160, 200, 0.25);
+}
+
+/* ── Floating Mini Audio Player (Spotify Style) ── */
+.mini-audio-player {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(140px);
+  width: min(880px, calc(100vw - 36px));
+  background: rgba(0, 16, 36, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(0, 212, 200, 0.45);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75), 0 0 35px rgba(0, 212, 200, 0.25);
+  z-index: 99990;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mini-audio-player.active {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mini-player-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  gap: 18px;
+}
+
+.mini-player-track-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 200px;
+  max-width: 260px;
+}
+
+.mini-player-thumb {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+.mini-player-text {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.mini-player-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mini-player-album {
+  font-size: 12px;
+  color: var(--accent-cyan);
+  white-space: nowrap;
+}
+
+.mini-player-controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  max-width: 380px;
+}
+
+.mini-player-btn-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1db954;
+  color: #000000;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(29, 185, 84, 0.4);
+  flex-shrink: 0;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.mini-player-btn-circle:hover {
+  transform: scale(1.1);
+  background: #1ed760;
+}
+
+.mini-player-btn-circle svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.mini-player-btn-circle .mini-pause-svg {
+  display: none;
+}
+
+.mini-audio-player.is-playing .mini-player-btn-circle .mini-play-svg {
+  display: none;
+}
+
+.mini-audio-player.is-playing .mini-player-btn-circle .mini-pause-svg {
+  display: block;
+}
+
+.mini-player-timeline {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.mini-player-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #1db954 0%, var(--accent-cyan) 100%);
+  border-radius: 3px;
+  transition: width 0.15s linear;
+}
+
+.mini-player-tag {
+  font-size: 10px;
+  font-weight: 900;
+  color: var(--accent-gold);
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.mini-player-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mini-player-spotify-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.mini-player-spotify-btn:hover {
+  background: #1db954;
+  color: #000000;
+  border-color: #1db954;
+}
+
+.mini-spotify-svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.mini-player-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+  transition: color 0.2s ease;
+}
+
+.mini-player-close:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 860px) {
+  .album-showcase-card {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 28px 20px 24px 20px;
+    border-radius: 22px;
+  }
+
+  .album-cover-box {
+    margin: 0 auto 16px;
+    width: 220px;
+    height: 220px;
+  }
+
+  .vinyl-disc {
+    width: 200px;
+    height: 200px;
+  }
+
+  .vinyl-center-label {
+    width: 72px;
+    height: 72px;
+  }
+
+  .track-song-title, .track-duration-time, .track-number-digit {
+    font-size: 13.5px;
+  }
+
+  .track-dots-leader {
+    margin: 0 8px;
+  }
+
+  .album-footer-actions {
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .mini-player-track-info {
+    max-width: 140px;
+  }
+
+  .mini-player-actions {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .album-showcase-card {
+    padding: 20px 12px 18px 12px;
+  }
+
+  .track-row-item {
+    padding: 3px 6px;
+  }
+
+  .track-song-title {
+    font-size: 12.5px;
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .track-duration-time, .track-number-digit {
+    font-size: 12.5px;
+  }
+}
+
+/* ── 16. Scroll-Triggered Reveal & Dynamic Undo-on-Scroll-Up ────────────── */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0s !important; /* Resets immediately when scrolling back up */
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: var(--reveal-delay, 0s) !important;
+}
+
+/* Pop / Scale Variant */
+.scroll-reveal.reveal-pop {
+  transform: scale(0.93) translateY(22px);
+}
+.scroll-reveal.reveal-pop.is-revealed {
+  transform: scale(1) translateY(0);
+}
+
+/* Section Line Laser Drawing Animation */
+.section-line.scroll-reveal {
+  transform: scaleX(0);
+  transform-origin: center center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.6s ease;
+  transition-delay: 0s !important;
+}
+.section-line.scroll-reveal.is-revealed {
+  transform: scaleX(1);
+  opacity: 1;
+  transition-delay: 0.18s !important;
+}
+
+/* Section Headers Sequence */
+.section-header .section-tag.scroll-reveal { --reveal-delay: 0s; }
+.section-header .section-title.scroll-reveal { --reveal-delay: 0.08s; }
+.section-header .section-subtitle.scroll-reveal { --reveal-delay: 0.22s; }
+
+/* Gods Heroes Container 3D Niche Reveal */
+.gods-heroes-container.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0s !important;
+}
+.gods-heroes-container.scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: none; /* Keeps 3D perspective and mouse tracking intact */
+  transition-delay: 0.1s !important;
+}
+
+/* Hero Section Elements Stagger Delays */
+.hero-badge.scroll-reveal { --reveal-delay: 0.1s; }
+.hero-title.scroll-reveal { --reveal-delay: 0.22s; }
+.hero-subtitle.scroll-reveal { --reveal-delay: 0.35s; }
+.hero-actions.scroll-reveal { --reveal-delay: 0.48s; }
+.hero-metrics.scroll-reveal { --reveal-delay: 0.6s; }
+
+/* Album Hero Header Stagger */
+.album-hero-header .hero-badge.scroll-reveal { --reveal-delay: 0.1s; }
+.album-hero-header .hero-title.scroll-reveal { --reveal-delay: 0.22s; }
+.album-hero-header .hero-subtitle.scroll-reveal { --reveal-delay: 0.35s; }
+
+/* Grid Child Staggers */
+.schedule-grid > .scroll-reveal:nth-child(1) { --reveal-delay: 0.05s; }
+.schedule-grid > .scroll-reveal:nth-child(2) { --reveal-delay: 0.14s; }
+.schedule-grid > .scroll-reveal:nth-child(3) { --reveal-delay: 0.23s; }
+.schedule-grid > .scroll-reveal:nth-child(4) { --reveal-delay: 0.32s; }
+
+.heroes-grid > .scroll-reveal:nth-child(1) { --reveal-delay: 0.04s; }
+.heroes-grid > .scroll-reveal:nth-child(2) { --reveal-delay: 0.11s; }
+.heroes-grid > .scroll-reveal:nth-child(3) { --reveal-delay: 0.18s; }
+.heroes-grid > .scroll-reveal:nth-child(4) { --reveal-delay: 0.25s; }
+.heroes-grid > .scroll-reveal:nth-child(5) { --reveal-delay: 0.32s; }
+.heroes-grid > .scroll-reveal:nth-child(6) { --reveal-delay: 0.39s; }
+
+.social-cards-grid > .scroll-reveal:nth-child(1) { --reveal-delay: 0.05s; }
+.social-cards-grid > .scroll-reveal:nth-child(2) { --reveal-delay: 0.14s; }
+.social-cards-grid > .scroll-reveal:nth-child(3) { --reveal-delay: 0.23s; }
+.social-cards-grid > .scroll-reveal:nth-child(4) { --reveal-delay: 0.32s; }
+
+.about-features > .scroll-reveal:nth-child(1) { --reveal-delay: 0.12s; }
+.about-features > .scroll-reveal:nth-child(2) { --reveal-delay: 0.22s; }
+.about-features > .scroll-reveal:nth-child(3) { --reveal-delay: 0.32s; }
+
+.album-showcase-container > .scroll-reveal:nth-child(1) { --reveal-delay: 0.06s; }
+.album-showcase-container > .scroll-reveal:nth-child(2) { --reveal-delay: 0.18s; }
+.album-showcase-container > .scroll-reveal:nth-child(3) { --reveal-delay: 0.30s; }
+
+.footer-container > .scroll-reveal:nth-child(1) { --reveal-delay: 0.05s; }
+.footer-container > .scroll-reveal:nth-child(2) { --reveal-delay: 0.16s; }
+.footer-container > .scroll-reveal:nth-child(3) { --reveal-delay: 0.27s; }
+
+/* Accessibility support: respect user reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .section-line.scroll-reveal,
+  .gods-heroes-container.scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ── 17. Lando Norris-Inspired High-Energy Polish & Coolness ──────────────── */
+
+/* ── A. Fluid Interactive Custom Cursor ── */
+.jk-cursor-dot,
+.jk-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 999999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: transform, width, height;
+}
+
+.jk-cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-cyan), 0 0 20px var(--accent-cyan-glow);
+  transition: width 0.22s ease, height 0.22s ease, background-color 0.22s ease, opacity 0.25s ease;
+}
+
+.jk-cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(0, 212, 200, 0.6);
+  box-shadow: 0 0 16px rgba(0, 212, 200, 0.25);
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              height 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.3s ease, 
+              background-color 0.3s ease, 
+              opacity 0.25s ease;
+}
+
+/* Cursor active on screen */
+body.cursor-active .jk-cursor-dot,
+body.cursor-active .jk-cursor-ring {
+  opacity: 1;
+}
+
+/* Hovering interactive elements (buttons, links, banners, cards) */
+body.cursor-hover .jk-cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent-gold);
+  box-shadow: 0 0 16px var(--accent-gold);
+}
+
+body.cursor-hover .jk-cursor-ring {
+  width: 60px;
+  height: 60px;
+  border-color: var(--accent-gold);
+  background: rgba(247, 209, 48, 0.1);
+  box-shadow: 0 0 28px rgba(247, 209, 48, 0.4);
+}
+
+/* Click feedback pulse */
+body.cursor-down .jk-cursor-ring {
+  transform: translate(-50%, -50%) scale(0.8);
+  border-color: #ff3355;
+}
+
+/* Hide custom cursor on mobile touch or reduced motion */
+@media (hover: none) and (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .jk-cursor-dot,
+  .jk-cursor-ring {
+    display: none !important;
+  }
+}
+
+/* ── B. Kinetic Rolling Button Text (OFF+BRAND Style) ── */
+.btn-roll {
+  display: inline-block;
+  overflow: hidden;
+  height: 1.28em;
+  line-height: 1.28em;
+  vertical-align: middle;
+}
+
+.btn-roll-inner {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.38s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.btn-roll-text {
+  display: block;
+  height: 1.28em;
+  line-height: 1.28em;
+  white-space: nowrap;
+}
+
+.btn:hover .btn-roll-inner,
+.btn-yt-card:hover .btn-roll-inner,
+.circle-media-btn:hover .btn-roll-inner,
+.banner-expand-btn:hover .btn-roll-inner {
+  transform: translateY(-50%);
+}
+
+/* ── C. Dynamic Card Mouse Spotlight Sheen ── */
+.schedule-card,
+.hero-class-card,
+.main-about-card,
+.social-hub-card,
+.album-showcase-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-spotlight-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    380px circle at var(--card-mouse-x, 50%) var(--card-mouse-y, 50%),
+    rgba(0, 212, 200, 0.16) 0%,
+    rgba(247, 209, 48, 0.05) 40%,
+    transparent 70%
+  );
+  z-index: 1;
+}
+
+.schedule-card:hover .card-spotlight-layer,
+.hero-class-card:hover .card-spotlight-layer,
+.main-about-card:hover .card-spotlight-layer,
+.social-hub-card:hover .card-spotlight-layer,
+.album-showcase-card:hover .card-spotlight-layer {
+  opacity: 1;
+}
+
+/* ── D. Technical Corner Crosshairs (+) ── */
+.card-corner {
+  position: absolute;
+  font-family: monospace, ui-monospace, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(0, 212, 200, 0.35);
+  pointer-events: none;
+  line-height: 1;
+  user-select: none;
+  z-index: 2;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.corner-tl { top: 12px; left: 14px; }
+.corner-tr { top: 12px; right: 14px; }
+.corner-bl { bottom: 12px; left: 14px; }
+.corner-br { bottom: 12px; right: 14px; }
+
+.schedule-card:hover .card-corner,
+.hero-class-card:hover .card-corner,
+.main-about-card:hover .card-corner,
+.album-showcase-card:hover .card-corner {
+  color: var(--accent-gold);
+  transform: scale(1.2);
+}
+
+/* ── E. Masked Split-Line Text Reveal ── */
+.masked-text-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.masked-text-inner {
+  display: inline-block;
+  transform: translateY(115%);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.is-revealed .masked-text-inner,
+.is-revealed.masked-text-inner {
+  transform: translateY(0);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   18. OHZI Interactive Creative Inspiration (WebGL Cosmos, 3D Tilt, Magnetic)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── A. Living Ambient Stardust Canvas ── */
+.ambient-stars-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1; /* Floating peacefully above ocean rays, below cards */
+  opacity: 0.9;
+  transition: opacity 0.5s ease;
+}
+
+body.light-theme .ambient-stars-canvas {
+  opacity: 0.75;
+}
+
+/* ── B. OHZI Dynamic 3D Card Tilt with Prismatic Reflection ── */
+.schedule-card,
+.hero-class-card,
+.main-about-card,
+.album-showcase-card,
+.social-hub-card {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  transition: transform 0.28s cubic-bezier(0.2, 0, 0.2, 1), 
+              box-shadow 0.35s ease, 
+              border-color 0.35s ease;
+}
+
+.schedule-card.is-tilting,
+.hero-class-card.is-tilting,
+.main-about-card.is-tilting,
+.album-showcase-card.is-tilting,
+.social-hub-card.is-tilting {
+  transition: transform 0.08s ease-out, 
+              box-shadow 0.35s ease, 
+              border-color 0.35s ease;
+  transform: perspective(1000px) 
+             rotateX(var(--card-tilt-x, 0deg)) 
+             rotateY(var(--card-tilt-y, 0deg)) 
+             translateY(-8px) 
+             scale3d(1.02, 1.02, 1.02);
+}
+
+/* Prismatic edge reflection (hugs card contour following cursor) */
+.card-prismatic-border {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    460px circle at var(--card-mouse-x, 50%) var(--card-mouse-y, 50%),
+    rgba(0, 212, 200, 0.5) 0%,
+    rgba(255, 215, 0, 0.35) 25%,
+    rgba(0, 162, 255, 0.2) 45%,
+    transparent 65%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1.5px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 2;
+}
+
+.schedule-card:hover .card-prismatic-border,
+.hero-class-card:hover .card-prismatic-border,
+.main-about-card:hover .card-prismatic-border,
+.album-showcase-card:hover .card-prismatic-border,
+.social-hub-card:hover .card-prismatic-border {
+  opacity: 1;
+}
+
+/* ── C. OHZI-Inspired Magnetic Interactive Physics ── */
+[data-magnetic] {
+  display: inline-flex;
+  transition: transform 0.18s cubic-bezier(0.2, 0, 0.2, 1);
+  will-change: transform;
+}
+
+[data-magnetic] > * {
+  pointer-events: none;
+  transition: transform 0.22s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+/* ── D. Upgraded OHZI Liquid Glass Cursor Ring ── */
+body.cursor-hover .jk-cursor-ring {
+  width: 62px;
+  height: 62px;
+  border-color: rgba(0, 212, 200, 0.85);
+  background: radial-gradient(circle, rgba(0, 212, 200, 0.14) 0%, rgba(247, 209, 48, 0.08) 55%, transparent 80%);
+  box-shadow: 0 0 30px rgba(0, 212, 200, 0.4), inset 0 0 14px rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+}
+
+/* ── E. Audiovisual Dancing Soundwave Equalizer ── */
+.track-equalizer-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 14px;
+  width: 14px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.track-equalizer-bars .eq-bar {
+  width: 2px;
+  background: var(--accent-cyan);
+  border-radius: 1px;
+  animation: eqPulse 0.75s ease-in-out infinite alternate;
+  box-shadow: 0 0 6px var(--accent-cyan-glow);
+}
+
+.track-equalizer-bars .eq-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+.track-equalizer-bars .eq-bar:nth-child(2) { height: 95%; animation-delay: 0.3s; }
+.track-equalizer-bars .eq-bar:nth-child(3) { height: 65%; animation-delay: 0.18s; }
+.track-equalizer-bars .eq-bar:nth-child(4) { height: 85%; animation-delay: 0.4s; }
+
+@keyframes eqPulse {
+  0% { transform: scaleY(0.25); }
+  100% { transform: scaleY(1); }
+}
+
+.album-track-item:not(.playing) .track-equalizer-bars {
+  display: none;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   19. Active Theory Creative Digital Inspiration (Fluid Ripples, Sound, Foil)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── A. Navbar Sound Atmosphere Toggle ── */
+.sound-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: var(--text-white);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.sound-toggle-btn:hover {
+  background: rgba(0, 212, 200, 0.18);
+  transform: translateY(-2px);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 16px var(--accent-cyan-glow);
+}
+
+.sound-toggle-btn.is-active {
+  background: rgba(0, 212, 200, 0.22);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 18px rgba(0, 212, 200, 0.35);
+}
+
+.sound-eq-icon {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 12px;
+  width: 12px;
+}
+
+.sound-eq-icon .s-bar {
+  width: 2.5px;
+  height: 35%;
+  background-color: currentColor;
+  border-radius: 1px;
+  transition: height 0.2s ease;
+}
+
+.sound-toggle-btn.is-active .sound-eq-icon .s-bar:nth-child(1) {
+  animation: eqPulse 0.55s ease-in-out infinite alternate;
+}
+.sound-toggle-btn.is-active .sound-eq-icon .s-bar:nth-child(2) {
+  animation: eqPulse 0.85s ease-in-out infinite alternate 0.15s;
+}
+.sound-toggle-btn.is-active .sound-eq-icon .s-bar:nth-child(3) {
+  animation: eqPulse 0.7s ease-in-out infinite alternate 0.3s;
+}
+
+body.light-theme .sound-toggle-btn {
+  background: rgba(2, 132, 199, 0.08);
+  border-color: rgba(2, 132, 199, 0.25);
+  color: #002b66;
+}
+
+body.light-theme .sound-toggle-btn.is-active {
+  background: rgba(0, 212, 200, 0.2);
+  border-color: var(--accent-cyan);
+  color: #0284c7;
+}
+
+/* ── B. Responsive Navbar Controls on Small Devices ── */
+@media (max-width: 540px) {
+  #theme-text,
+  #sound-text {
+    display: none;
+  }
+  .theme-toggle-btn,
+  .sound-toggle-btn {
+    padding: 7px 11px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   20. Immersive Garden Editorial Inspiration (Vitrine Depth & Micro-Interactions)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── A. Vitrine Image Counter-Parallax on Hover ── */
+.class-banner-thumb,
+.album-cover-img {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
+  will-change: transform;
+}
+
+.hero-class-card:hover .class-banner-thumb,
+.album-showcase-card:hover .album-cover-img {
+  transform: scale(1.035) translate3d(
+    calc(var(--card-tilt-y, 0deg) * -0.6px),
+    calc(var(--card-tilt-x, 0deg) * 0.6px),
+    0
+  );
+}
+
+/* ── C. Editorial Hairline Micro-Index Badge ── */
+.editorial-index-chip {
+  font-family: monospace, ui-monospace, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--accent-cyan);
+  opacity: 0.75;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(0, 212, 200, 0.25);
+  background: rgba(0, 212, 200, 0.06);
+  transition: opacity 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.schedule-card:hover .editorial-index-chip,
+.album-showcase-card:hover .editorial-index-chip {
+  opacity: 1;
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   21. Niche Insanely Cool Visual Innovations (Active Theory & Lusion Style)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── A. Volumetric Celestial God Rays & Targeted Hero Spotlight ── */
+.gods-heroes-container {
+  position: relative;
+  overflow: visible;
+}
+
+/* Ambient swaying celestial god rays (Smooth diffused mist) */
+.alcove-god-rays {
+  position: absolute;
+  top: -120px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.28;
+  background: 
+    repeating-linear-gradient(
+      -65deg,
+      transparent 0%,
+      transparent 7%,
+      rgba(0, 212, 200, 0.05) 11%,
+      rgba(247, 209, 48, 0.06) 16%,
+      transparent 22%,
+      transparent 30%
+    );
+  filter: blur(16px);
+  -webkit-filter: blur(16px);
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 15%,
+    black 35%,
+    black 70%,
+    transparent 96%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 15%,
+    black 35%,
+    black 70%,
+    transparent 96%
+  );
+  animation: godRaysSway 16s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+@keyframes godRaysSway {
+  0% { transform: skewX(-3deg) scaleY(0.98); opacity: 0.25; }
+  50% { transform: skewX(2deg) scaleY(1.02); opacity: 0.4; }
+  100% { transform: skewX(-4deg) scaleY(1); opacity: 0.28; }
+}
+
+/* Targeted Top-Down Hero Spotlight (Silky Soft Volumetric Heavenly Glow, Zero Sharp Edges) */
+.alcove-hero-spotlight {
+  position: absolute;
+  top: -160px;
+  left: 0;
+  width: 360px;
+  height: calc(100% + 220px);
+  pointer-events: none;
+  z-index: 12;
+  opacity: 0;
+  background: radial-gradient(
+    ellipse 65% 45% at 50% 40%,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(247, 209, 48, 0.32) 20%,
+    rgba(0, 212, 200, 0.16) 42%,
+    rgba(0, 212, 200, 0.04) 64%,
+    transparent 80%
+  );
+  filter: blur(20px);
+  -webkit-filter: blur(20px);
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 14%,
+    black 32%,
+    black 70%,
+    transparent 96%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 14%,
+    black 32%,
+    black 70%,
+    transparent 96%
+  );
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+.alcove-hero-spotlight.is-active {
+  opacity: 1;
+}
+
+/* Floor Pedestal Halo (Luminous smooth floor reflection directly under the hovered standing hero) */
+.alcove-pedestal-halo {
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 180px;
+  height: 52px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 11;
+  opacity: 0;
+  background: radial-gradient(ellipse at center, rgba(247, 209, 48, 0.55) 0%, rgba(0, 212, 200, 0.35) 45%, transparent 75%);
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  box-shadow: 0 0 45px rgba(247, 209, 48, 0.45), 0 0 65px var(--accent-cyan-glow);
+  transform: scaleY(0.4) translateZ(0);
+  transition: opacity 0.45s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.alcove-pedestal-halo.is-active {
+  opacity: 1;
+}
+
+/* ── B. Holographic RGB Prism Split on Fast Cursor Whip ── */
+body.is-whip-active .small-banner-item:hover,
+body.is-whip-active .hero-class-card:hover,
+body.is-whip-active .schedule-card:hover,
+body.is-whip-active .album-showcase-card:hover {
+  box-shadow: 
+    calc(var(--whip-x, 0) * -3px) calc(var(--whip-y, 0) * -2px) 24px rgba(0, 212, 200, 0.7),
+    calc(var(--whip-x, 0) * 3px) calc(var(--whip-y, 0) * 2px) 24px rgba(255, 42, 109, 0.65) !important;
+}
+
+body.is-whip-active .section-title {
+  text-shadow: 
+    calc(var(--whip-x, 0) * -2.5px) calc(var(--whip-y, 0) * -1.5px) 0 rgba(0, 212, 200, 0.75),
+    calc(var(--whip-x, 0) * 2.5px) calc(var(--whip-y, 0) * 1.5px) 0 rgba(255, 42, 109, 0.75);
+}
+
+/* ── D. Audio-Reactive Ambient Canvas Breathing Glow ── */
+#ohzi-ambient-canvas {
+  transition: filter 0.25s ease;
+}
+
+body.audio-is-playing #ohzi-ambient-canvas {
+  filter: drop-shadow(0 0 25px rgba(0, 212, 200, 0.25));
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   22. Landon Norris-Inspired Hero Ambient Video & Live Ambient Dock
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Hero Ambient Video Layer (Visibly appears at subtle opacity) ── */
+.hero-ambient-video-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  will-change: opacity, transform;
+}
+
+.hero-bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%) scale(1.04);
+  object-fit: cover;
+  opacity: 0.24; /* Subtle small percent amount of opacity */
+  mix-blend-mode: screen;
+  filter: saturate(1.3) contrast(1.15) brightness(0.92);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              filter 0.8s ease, 
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+}
+
+/* User interaction boost: Hovering or toggling "More Show" */
+.hero-section.mode-boost .hero-bg-video,
+.hero-section:hover .hero-bg-video {
+  opacity: 0.40;
+  filter: saturate(1.4) contrast(1.2) brightness(1.0);
+  transform: translate(-50%, -50%) scale(1.02);
+}
+
+.hero-section.mode-ultra .hero-bg-video {
+  opacity: 0.62;
+  filter: saturate(1.45) contrast(1.25) brightness(1.05);
+}
+
+/* Light Theme adjustment */
+body.light-theme .hero-bg-video {
+  mix-blend-mode: multiply;
+  opacity: 0.16;
+  filter: saturate(1.15) contrast(1.1);
+}
+
+body.light-theme .hero-section.mode-boost .hero-bg-video,
+body.light-theme .hero-section:hover .hero-bg-video {
+  opacity: 0.28;
+}
+
+body.light-theme .hero-section.mode-ultra .hero-bg-video {
+  opacity: 0.48;
+}
+
+/* Ambient Vignette & Scrim for Crystal Clear Typography */
+.hero-video-scrim {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 90% 70% at 50% 45%, rgba(6, 18, 38, 0.4) 0%, rgba(6, 18, 38, 0.78) 70%, var(--bg-dark) 100%),
+    linear-gradient(180deg, rgba(6, 18, 38, 0.85) 0%, transparent 25%, transparent 70%, var(--bg-dark) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+body.light-theme .hero-video-scrim {
+  background: 
+    radial-gradient(ellipse 90% 70% at 50% 45%, rgba(240, 249, 255, 0.45) 0%, rgba(240, 249, 255, 0.82) 70%, var(--bg-light) 100%),
+    linear-gradient(180deg, rgba(240, 249, 255, 0.85) 0%, transparent 25%, transparent 70%, var(--bg-light) 100%);
+}
+
+/* High-tech fine scanlines overlay (Lando Norris Aesthetic) */
+.hero-video-grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 100% 4px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Ensure Hero Container contents float gracefully above the video layer */
+.hero-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Cinematic Video Theater Modal ── */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.video-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.video-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 10, 24, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.video-modal-dialog {
+  position: relative;
+  z-index: 10;
+  width: min(960px, 94vw);
+  background: #020c1b;
+  border: 1.5px solid rgba(0, 212, 200, 0.45);
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 50px rgba(0, 212, 200, 0.25);
+  overflow: hidden;
+  transform: scale(0.92) translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.video-modal.active .video-modal-dialog {
+  transform: scale(1) translateY(0);
+}
+
+.video-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: rgba(4, 20, 40, 0.95);
+  border-bottom: 1px solid rgba(0, 212, 200, 0.2);
+}
+
+.video-modal-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.video-modal-category {
+  font-family: monospace, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  letter-spacing: 1.2px;
+}
+
+.video-modal-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+
+.video-modal-close {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.video-modal-close:hover {
+  background: #ff3355;
+  border-color: #ff3355;
+  transform: scale(1.1);
+}
+
+.video-modal-body {
+  position: relative;
+  background: #000000;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#theater-video-player {
+  width: 100%;
+  height: 100%;
+  max-height: 76vh;
+  object-fit: contain;
+  outline: none;
+}
+
+/* Light Theme Support for Video Showcase */
+body.light-theme .featured-video-card,
+body.light-theme .video-grid-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(235, 248, 255, 0.9) 100%);
+  border-color: rgba(0, 160, 220, 0.3);
+  box-shadow: 0 16px 40px rgba(0, 60, 120, 0.12);
+}
+
+body.light-theme .featured-video-title,
+body.light-theme .video-grid-title {
+  color: #002b66;
+}
+
+body.light-theme .featured-video-desc,
+body.light-theme .video-grid-desc {
+  color: #334e68;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   23. Landon Norris Topographic Contours & Occasional Ambient Photo Stream
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Topographic Elevation Lines (Exact match to landonorris.com screenshot) ── */
+.landon-topographic-layer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.7;
+  transition: opacity 0.5s ease;
+}
+
+.topo-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.topo-path {
+  fill: none;
+  stroke: rgba(0, 212, 200, 0.08);
+  stroke-width: 1.1;
+  stroke-dasharray: 4 2;
+  transition: stroke 0.4s ease;
+}
+
+.topo-path.p2,
+.topo-path.p4 {
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-dasharray: none;
+  stroke-width: 0.9;
+}
+
+.topo-path.p1,
+.topo-path.p5 {
+  animation: topoShift 20s ease-in-out infinite alternate;
+}
+
+@keyframes topoShift {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-10px) scale(1.02); }
+}
+
+body.light-theme .topo-path {
+  stroke: rgba(2, 132, 199, 0.09);
+}
+body.light-theme .topo-path.p2,
+body.light-theme .topo-path.p4 {
+  stroke: rgba(0, 0, 0, 0.05);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   24. Mind-Blowing Creative Enhancements (Bioluminescence, Blessing Orb, 
+       2.5D Parallax Depth, Cinematic Scroll Horizon, Audio Ocean Beat)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Liquid Bioluminescence Canvas ────────────────────────── */
+.biolum-fluid-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+
+body.light-theme .biolum-fluid-canvas {
+  mix-blend-mode: multiply;
+  opacity: 0.6;
+}
+
+
+
+/* ── 3. True Multi-Layer 3D Depth (Stacked Image Diorama) ─────── */
+
+/* Wrapper — preserves 3D so child Z values separate visually */
+.small-banner-item {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.banner-3d-card {
+  transform-style: preserve-3d;
+  position: relative;
+  overflow: visible;
+  will-change: transform, box-shadow;
+  /* no CSS transition — JS lerp handles all motion */
+}
+
+/* ── Shared style for all stacked image copies ── */
+.px-img-back,
+.px-img-mid,
+.px-img-fore {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 18px;
+  pointer-events: none;
+  will-change: transform;
+  transform-style: preserve-3d;
+  /* No CSS transition — JS lerp is the animation */
+}
+
+/* ── Back layer: full image, pushed far back ─
+   Represents the distant background (sunburst, gradient fill).
+   Slightly dimmed and scaled-up so bleed is invisible. */
+.px-img-back {
+  z-index: 1;
+  opacity: 0.55;
+  filter: blur(1.5px) brightness(0.7);
+}
+
+/* ── Mid layer: the title text band (GOD'S, HEROES, KELAS 6) ──
+   Clipped to the central ~55% vertical strip of the card.
+   When the card tilts, this slice floats at Z=18px — visibly
+   in front of the blurred background. */
+.px-img-mid {
+  z-index: 3;
+  opacity: 0;
+  clip-path: inset(28% 0% 20% 0% round 18px);
+  transition: opacity 0.3s ease;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.55));
+}
+
+/* ── Fore layer: clouds + logo band (top ~42% of card) ──
+   This is the "closest" layer — floats at Z=40px.
+   On hover it visibly pops out in front of the text. */
+.px-img-fore {
+  z-index: 5;
+  opacity: 0;
+  clip-path: inset(0% 0% 58% 0% round 18px);
+  transition: opacity 0.3s ease;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.65));
+}
+
+/* Activate the clipped layers only on hover — they fade in */
+.small-banner-item:hover .px-img-mid,
+.small-banner-item:hover .px-img-fore {
+  opacity: 1;
+}
+
+/* Base image: sits at Z=0 as the reference plane */
+.small-banner-img {
+  position: relative;
+  z-index: 2;
+  will-change: transform;
+}
+
+/* Dim siblings during hover */
+.small-banners-overlay:has(.small-banner-item:hover) .small-banner-item:not(:hover) {
+  opacity: 0.6;
+  filter: brightness(0.70) saturate(0.75);
+  transition: opacity 0.35s ease, filter 0.35s ease;
+}
+
+.small-banners-overlay .small-banner-item:hover {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* Caption pops out in front */
+.small-banner-item:hover .small-banner-caption {
+  transform: translateZ(52px) scale(1.06);
+  background: linear-gradient(135deg, var(--accent-gold) 0%, #ffbe1a 100%);
+  color: #002b66;
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 24px var(--accent-gold), 0 0 40px rgba(0, 212, 200, 0.4);
+}
+
+/* ── 4. Cinematic Scroll Horizon Transition ──────────────────── */
+.hero-title,
+.hero-subtitle,
+.hero-badge,
+.hero-actions,
+.hero-metrics {
+  will-change: transform, opacity;
+  transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+/* ── 5. Audio-Visualizer Ocean Beat Reactions ────────────────── */
+body.sound-atmosphere-active .landon-topographic-layer {
+  opacity: 0.95;
+  filter: drop-shadow(0 0 15px rgba(0, 212, 200, 0.2));
+  animation: oceanSoundPulse 2.8s ease-in-out infinite alternate;
+}
+
+body.sound-atmosphere-active .topo-path {
+  animation: topoFrequencyDance 3.4s ease-in-out infinite alternate;
+}
+
+@keyframes oceanSoundPulse {
+  0% { transform: scale(1); filter: brightness(1) drop-shadow(0 0 10px rgba(0, 212, 200, 0.15)); }
+  50% { transform: scale(1.015); filter: brightness(1.25) drop-shadow(0 0 25px rgba(0, 212, 200, 0.45)); }
+  100% { transform: scale(1); filter: brightness(1) drop-shadow(0 0 10px rgba(0, 212, 200, 0.15)); }
+}
+
+@keyframes topoFrequencyDance {
+  0% { stroke-width: 1.1; stroke: rgba(0, 212, 200, 0.1); }
+  50% { stroke-width: 1.7; stroke: rgba(247, 209, 48, 0.22); }
+  100% { stroke-width: 1.1; stroke: rgba(0, 212, 200, 0.1); }
+}
+
+
+
+
+
+
+
+
+
+
+

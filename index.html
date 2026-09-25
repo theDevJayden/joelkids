@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joel Kids Ministry | Gereja Anak Generasi Emas</title>
+  <meta name="description" content="Website resmi Joel Kids Ministry. Jadwal ibadah anak, pengenalan kelas Gods Heroes, media sosial, dan lagu rohani anak.">
+  <link rel="icon" type="image/svg+xml" href="asset/icon.svg">
+  
+  <!-- Modern Rounded Typography (Google Font Nunito) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ── Ambient Ocean Atmosphere Decor ────────────────────────── -->
+  <div class="ocean-sunrays" aria-hidden="true">
+    <div class="ray ray-1"></div>
+    <div class="ray ray-2"></div>
+    <div class="ray ray-3"></div>
+  </div>
+  <div class="ocean-bubbles" aria-hidden="true"></div>
+  <canvas id="ohzi-ambient-canvas" class="ambient-stars-canvas" aria-hidden="true"></canvas>
+  <canvas id="biolum-fluid-canvas" class="biolum-fluid-canvas" aria-hidden="true"></canvas>
+
+  <!-- ── Landon Norris Topographic Contour Lines Layer ─────────── -->
+  <div class="landon-topographic-layer" aria-hidden="true">
+    <svg class="topo-svg" viewBox="0 0 1600 1000" preserveAspectRatio="none">
+      <path d="M-100,180 C250,80 500,280 850,150 C1200,20 1450,220 1700,160" class="topo-path p1" />
+      <path d="M-100,260 C280,160 520,380 900,240 C1240,110 1480,310 1700,250" class="topo-path p2" />
+      <path d="M-100,420 C320,320 600,520 980,380 C1300,250 1520,460 1700,400" class="topo-path p3" />
+      <path d="M-100,580 C240,500 560,700 920,560 C1260,430 1460,650 1700,600" class="topo-path p4" />
+      <path d="M-100,740 C350,660 680,860 1050,720 C1340,600 1540,810 1700,760" class="topo-path p5" />
+      <path d="M-100,900 C280,820 620,980 980,870 C1280,770 1490,940 1700,910" class="topo-path p6" />
+    </svg>
+  </div>
+
+  <!-- ── 1. Modern Sticky Frosted Glass Navbar ────────────────── -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand" aria-label="Beranda Joel Kids">
+        <img src="asset/joelkids_logo.png" alt="Joel Kids Logo" class="logo-img" onerror="this.src='asset/icon.svg'">
+        <div class="brand-text">
+          <span class="brand-title joelkids-rainbow-hook" aria-label="Joel Kids">
+            <span class="rainbow-letter" data-color="#ff3355">J</span><span class="rainbow-letter" data-color="#ff7a00">o</span><span class="rainbow-letter" data-color="#ffd200">e</span><span class="rainbow-letter" data-color="#00e676">l</span><span class="rainbow-space">&nbsp;</span><span class="rainbow-letter" data-color="#00d4c8">K</span><span class="rainbow-letter" data-color="#00a2ff">i</span><span class="rainbow-letter" data-color="#9d4edd">d</span><span class="rainbow-letter" data-color="#ff3399">s</span>
+          </span>
+          <span class="brand-sub">MINISTRY</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link">Tentang Kita</a></li>
+          <li><a href="#jadwal" class="nav-link">Jadwal Ibadah</a></li>
+          <li><a href="#banner-heroes" class="nav-link">Banner Kelas</a></li>
+          <li><a href="#kelas" class="nav-link">Kelas Anak</a></li>
+          <li><a href="#social" class="nav-link">Media Sosial</a></li>
+          <li><a href="album-lagu.html" class="nav-link nav-highlight">Album Lagu 🎵</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Controls: Sound Design, Theme Toggle & Mobile Hamburger -->
+      <div class="nav-actions">
+        <button id="sound-toggle" class="sound-toggle-btn" aria-label="Aktifkan Sound Effects" title="Sound Atmosphere (Active Theory Style)">
+          <span class="sound-eq-icon" aria-hidden="true">
+            <span class="s-bar"></span>
+            <span class="s-bar"></span>
+            <span class="s-bar"></span>
+          </span>
+          <span id="sound-text">Sound: OFF</span>
+        </button>
+
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Ganti Tema">
+          <span id="theme-icon">🌊</span>
+          <span id="theme-text">Deep Ocean</span>
+        </button>
+
+        <button id="mobile-toggle" class="mobile-toggle-btn" aria-label="Buka Menu Navigasi">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+  <main class="main-content">
+    
+    <!-- ── 2. Cinematic Hero Section (GMS Church Vibe x Ocean Depth x Lando Norris Ambient Video) ── -->
+    <section class="hero-section" id="hero">
+      <!-- Ambient Cinematic Video Layer (Inspired by landonorris.com) -->
+      <div class="hero-ambient-video-wrapper" id="hero-ambient-wrapper" aria-hidden="true">
+        <video id="hero-bg-video" class="hero-bg-video" autoplay muted loop playsinline preload="auto">
+          <source src="3qj35j5j3q/normal/THEME SONG JOEL KIDS.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-scrim"></div>
+        <div class="hero-video-grid-lines"></div>
+      </div>
+
+      <div class="hero-container">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          GEREJA ANAK • GENERASI EMAS KRISTUS
+        </div>
+        
+        <h1 class="hero-title">
+          WELCOME HOME, <br>
+          <span class="gradient-text joelkids-rainbow-hook" id="hero-title-hook" aria-label="Joel Kids">
+            <span class="rainbow-letter" data-color="#ff3355">J</span><span class="rainbow-letter" data-color="#ff7a00">o</span><span class="rainbow-letter" data-color="#ffd200">e</span><span class="rainbow-letter" data-color="#00e676">l</span><span class="rainbow-space">&nbsp;</span><span class="rainbow-letter" data-color="#00d4c8">K</span><span class="rainbow-letter" data-color="#00a2ff">i</span><span class="rainbow-letter" data-color="#9d4edd">d</span><span class="rainbow-letter" data-color="#ff3399">s</span>
+          </span>
+        </h1>
+        
+        <p class="hero-subtitle">
+          Mencetak generasi anak yang dipenuhi Roh Kudus, berakar kuat dalam firman Tuhan, 
+          dan memancarkan terang kasih Kristus bagi bangsa-bangsa sejak usia dini.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#jadwal" class="btn btn-primary">
+            <span>📅 Lihat Jadwal Ibadah</span>
+          </a>
+          <a href="https://youtube.com/@joelkidsministry?si=W3_oBHQ2Awij22_t" target="_blank" rel="noopener noreferrer" class="btn btn-glass">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            <span>Ibadah Online YouTube</span>
+          </a>
+        </div>
+
+        <!-- Quick Highlight Metrics -->
+        <div class="hero-metrics">
+          <div class="metric-item">
+            <span class="metric-number">4</span>
+            <span class="metric-label">Ibadah Minggu</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-number">6</span>
+            <span class="metric-label">Kategori Kelas</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-number">100%</span>
+            <span class="metric-label">Kasih & Firman</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 3. High-Energy Infinite Marquee Banner (GMS Style) ──── -->
+    <section class="vision-marquee-section" aria-label="Ayat Firman Berjalan">
+      <div class="marquee-track">
+        <div class="marquee-content">
+          <span class="marquee-badge">YOEL 2:28</span>
+          <span class="marquee-text">AKU AKAN MENCURAHKAN ROH-KU KE ATAS SEMUA MANUSIA</span>
+          <span class="marquee-star">✦</span>
+          <span class="marquee-text">ANAK-ANAK LELAKI DAN PEREMPUANMU AKAN BERNUBUAT</span>
+          <span class="marquee-star">✦</span>
+          <span class="marquee-text">ORANG-ORANG TUAMU AKAN MENDAPAT MIMPI</span>
+          <span class="marquee-star">✦</span>
+          <span class="marquee-text">PEMUDA-PEMUDAMU AKAN MENDAPAT PENGLIHATAN</span>
+          <span class="marquee-star">✦</span>
+          <span class="marquee-badge">GENERASI EMAS</span>
+          <span class="marquee-text">BERTUMBUH KUAT DI DALAM TUHAN YESUS</span>
+          <span class="marquee-star">✦</span>
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+          <span class="marquee-badge">YOEL 2:28</span>
+          <span class="marquee-text">AKU AKAN MENCURAHKAN ROH-KU KE ATAS SEMUA MANUSIA</span>
+          <span class="marquee-star">✦</span>
+          <span class="marquee-text">ANAK-ANAK LELAKI DAN PEREMPUANMU AKAN BERNUBUAT</span>
+          <span class="marquee-star">✦</span>
+          <span class="marquee-text">ORANG-ORANG TUAMU AKAN MENDAPAT MIMPI</span>
+          <span class="marquee-star">✦</span>
+          <span class="marquee-text">PEMUDA-PEMUDAMU AKAN MENDAPAT PENGLIHATAN</span>
+          <span class="marquee-star">✦</span>
+          <span class="marquee-badge">GENERASI EMAS</span>
+          <span class="marquee-text">BERTUMBUH KUAT DI DALAM TUHAN YESUS</span>
+          <span class="marquee-star">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-wrapper">
+      
+      <!-- ── 4. Tentang Kami (About Us) ────────────────────────── -->
+      <section id="about" class="page-section">
+        <div class="section-header">
+          <span class="section-tag">// 01 • MENGENAL KAMI</span>
+          <h2 class="section-title">TENTANG JOEL KIDS</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card main-about-card">
+            <div class="card-glow"></div>
+            <div class="about-badge">🌱 VISI & MISI</div>
+            <h3 class="about-headline">Mencetak Generasi Terang yang Mengasihi Kristus Sepenuh Hati</h3>
+            <p class="about-description">
+              Joel Kids Ministry adalah wadah pelayanan anak yang berfokus menanamkan nilai-nilai kebenaran Firman Tuhan 
+              dan kuasa Roh Kudus sejak usia dini. Melalui pujian penyembahan yang bersukacita, pengajaran Alkitab interaktif, 
+              serta persekutuan yang hangat, setiap anak dibimbing untuk menjadi murid Kristus yang berdampak bagi keluarga, 
+              sekolah, dan masa depan bangsa.
+            </p>
+            <div class="about-features">
+              <div class="feature-item">
+                <span class="feature-icon">❤️</span>
+                <span class="feature-text">Pengenalan Kasih Kristus</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">📖</span>
+                <span class="feature-text">Karakter Alkitabiah</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">🕊️</span>
+                <span class="feature-text">Kegerakan Roh Kudus</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.content-wrapper -->
+
+    <!-- ── 5. Gods Heroes Banner (Full Width Across Screen + Small Banners Overlay) ── -->
+    <section class="gods-heroes-fullwidth" id="banner-heroes">
+      <div class="banner-section-header">
+        <span class="section-tag">// 02 • SHOWCASE GODS HEROES</span>
+        <h2 class="section-title">BANNER KELAS ANAK</h2>
+      </div>
+
+      <div class="gods-heroes-container">
+        <!-- Volumetric Celestial God Rays & Targeted Hero Spotlight -->
+        <div class="alcove-god-rays" aria-hidden="true"></div>
+        <div class="alcove-hero-spotlight" aria-hidden="true"></div>
+        <div class="alcove-pedestal-halo" aria-hidden="true"></div>
+
+        <img src="asset/Gods_Heroes_Banner.svg" alt="Gods Heroes Banner" class="main-banner">
+        
+        <div class="small-banners-overlay">
+          <!-- Batita -->
+          <div class="small-banner-item" onclick="openBannerModal('asset/Gods_heroes/love_batita.png', 'asset/Gods_heroes/love_batita.svg', 'Love Heroes Batita (1-3 Tahun)')" title="Lihat Banner Love Batita">
+            <div class="banner-3d-card">
+              <div class="banner-glare-effect"></div>
+              <img src="asset/Gods_heroes/love_batita.png" alt="Love Batita" class="small-banner-img" onerror="this.onerror=null; this.src='asset/Gods_heroes/love_batita.svg';">
+            </div>
+            <span class="small-banner-caption">Love Batita</span>
+          </div>
+
+          <!-- Balita -->
+          <div class="small-banner-item" onclick="openBannerModal('asset/Gods_heroes/love_balita.png', 'asset/Gods_heroes/love_balita.svg', 'Love Heroes Balita (4-5 Tahun)')" title="Lihat Banner Love Balita">
+            <div class="banner-3d-card">
+              <div class="banner-glare-effect"></div>
+              <img src="asset/Gods_heroes/love_balita.png" alt="Love Balita" class="small-banner-img" onerror="this.onerror=null; this.src='asset/Gods_heroes/love_balita.svg';">
+            </div>
+            <span class="small-banner-caption">Love Balita</span>
+          </div>
+
+          <!-- Faith -->
+          <div class="small-banner-item" onclick="openBannerModal('asset/Gods_heroes/faith.png', 'asset/Gods_heroes/faith.svg', 'Faith Heroes (Kelas 1 SD)')" title="Lihat Banner Faith">
+            <div class="banner-3d-card">
+              <div class="banner-glare-effect"></div>
+              <img src="asset/Gods_heroes/faith.png" alt="Faith" class="small-banner-img" onerror="this.onerror=null; this.src='asset/Gods_heroes/faith.svg';">
+            </div>
+            <span class="small-banner-caption">Faith</span>
+          </div>
+
+          <!-- Hope -->
+          <div class="small-banner-item" onclick="openBannerModal('asset/Gods_heroes/hope.png', 'asset/Gods_heroes/hope.svg', 'Hope Heroes (Kelas 2-3 SD)')" title="Lihat Banner Hope">
+            <div class="banner-3d-card">
+              <div class="banner-glare-effect"></div>
+              <img src="asset/Gods_heroes/hope.png" alt="Hope" class="small-banner-img" onerror="this.onerror=null; this.src='asset/Gods_heroes/hope.svg';">
+            </div>
+            <span class="small-banner-caption">Hope</span>
+          </div>
+
+          <!-- Prayer -->
+          <div class="small-banner-item" onclick="openBannerModal('asset/Gods_heroes/prayer.png', 'asset/Gods_heroes/prayer.svg', 'Prayer Heroes (Kelas 4-5 SD)')" title="Lihat Banner Prayer Heroes">
+            <div class="banner-3d-card">
+              <div class="banner-glare-effect"></div>
+              <img src="asset/Gods_heroes/prayer.png" alt="Prayer Heroes" class="small-banner-img" onerror="this.onerror=null; this.src='asset/Gods_heroes/prayer.svg';">
+            </div>
+            <span class="small-banner-caption">Prayer</span>
+          </div>
+
+          <!-- Gods Heroes -->
+          <div class="small-banner-item" onclick="openBannerModal('asset/Gods_heroes/gods_heroes.png', 'asset/Gods_heroes/gods_heroes.svg', 'Gods Heroes (Kelas 6 SD)')" title="Lihat Banner Gods Heroes">
+            <div class="banner-3d-card">
+              <div class="banner-glare-effect"></div>
+              <img src="asset/Gods_heroes/gods_heroes.png" alt="Gods Heroes" class="small-banner-img" onerror="this.onerror=null; this.src='asset/Gods_heroes/gods_heroes.svg';">
+            </div>
+            <span class="small-banner-caption">Heroes</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-wrapper">
+
+      <!-- ── 6. Jadwal Ibadah (GMS "Acara Kita" Modern Card Grid) ─ -->
+      <section id="jadwal" class="page-section">
+        <div class="section-header">
+          <span class="section-tag">// 03 • JADWAL IBADAH MINGGU</span>
+          <h2 class="section-title">JADWAL IBADAH MINGGU</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="schedule-grid">
+          
+          <!-- Card 1: Kids Impact -->
+          <article class="schedule-card card-impact">
+            <div class="card-top-tag">
+              <span class="session-badge badge-impact">PAGI</span>
+              <span class="time-chip">07.00 WIB</span>
+              <span class="editorial-index-chip">// 01</span>
+            </div>
+            <div class="card-icon-wrap icon-impact">
+              <svg viewBox="0 0 24 24" class="svg-icon">
+                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-2h2zm0-4h-2V7h2z"/>
+              </svg>
+            </div>
+            <h3 class="schedule-service-name">KIDS IMPACT</h3>
+            <p class="schedule-desc">Ibadah pagi penuh sukacita, hadirat Tuhan, dan pujian bersemangat untuk memulai hari Tuhan.</p>
+            <div class="schedule-timing-list">
+              <div class="timing-row">
+                <span class="timing-target">Kelas 1-6 SD</span>
+                <span class="timing-val">07.00 - 09.00 WIB</span>
+              </div>
+              <div class="timing-row">
+                <span class="timing-target">Balita</span>
+                <span class="timing-val">07.30 - 09.00 WIB</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Kids Revival -->
+          <article class="schedule-card card-revival">
+            <div class="card-top-tag">
+              <span class="session-badge badge-revival">SIANG</span>
+              <span class="time-chip">10.00 WIB</span>
+              <span class="editorial-index-chip">// 02</span>
+            </div>
+            <div class="card-icon-wrap icon-revival">
+              <svg viewBox="0 0 24 24" class="svg-icon">
+                <path d="M10.5 2h3v6h6v3h-6v11h-3V11h-6V8h6V2z"/>
+              </svg>
+            </div>
+            <h3 class="schedule-service-name">KIDS REVIVAL</h3>
+            <p class="schedule-desc">Kebangunan rohani anak-anak dengan pengajaran firman yang hidup dan penyembahan intim.</p>
+            <div class="schedule-timing-list">
+              <div class="timing-row">
+                <span class="timing-target">Kelas 1-6 SD</span>
+                <span class="timing-val">10.00 - 12.00 WIB</span>
+              </div>
+              <div class="timing-row">
+                <span class="timing-target">Balita</span>
+                <span class="timing-val">10.30 - 12.00 WIB</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Kids Fire -->
+          <article class="schedule-card card-fire">
+            <div class="card-top-tag">
+              <span class="session-badge badge-fire">SORE</span>
+              <span class="time-chip">17.00 WIB</span>
+              <span class="editorial-index-chip">// 03</span>
+            </div>
+            <div class="card-icon-wrap icon-fire">
+              <svg viewBox="0 0 24 24" class="svg-icon">
+                <path d="M12 2.5c0 0-5.5 6-5.5 11 0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5c0-5-5.5-11-5.5-11zm0 14c-1.66 0-3-1.34-3-3 0-1.8 1.8-4.2 3-5.5 1.2 1.3 3 3.7 3 5.5 0 1.66-1.34 3-3 3z"/>
+              </svg>
+            </div>
+            <h3 class="schedule-service-name">KIDS FIRE</h3>
+            <p class="schedule-desc">Ibadah sore yang membakar hati anak-anak dengan api doa dan Roh Kudus yang menyala-nyala.</p>
+            <div class="schedule-timing-list">
+              <div class="timing-row">
+                <span class="timing-target">Kelas 1-6 SD</span>
+                <span class="timing-val">17.00 - 19.00 WIB</span>
+              </div>
+              <div class="timing-row">
+                <span class="timing-target">Balita</span>
+                <span class="timing-val">17.30 - 19.00 WIB</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Ibadah Online -->
+          <article class="schedule-card card-online">
+            <div class="card-top-tag">
+              <span class="session-badge badge-online">STREAMING</span>
+              <span class="time-chip live-chip">● ONLINE</span>
+            </div>
+            <div class="card-icon-wrap icon-online">
+              <svg viewBox="0 0 24 24" class="svg-icon">
+                <path d="M21.58 7.19a2.71 2.71 0 0 0-1.9-1.9C18 4.75 12 4.75 12 4.75s-6 0-7.68.54a2.71 2.71 0 0 0-1.9 1.9C2 8.87 2 12 2 12s0 3.13.42 4.81a2.71 2.71 0 0 0 1.9 1.9c1.68.54 7.68.54 7.68.54s6 0 7.68-.54a2.71 2.71 0 0 0 1.9-1.9C22 15.13 22 12 22 12s0-3.13-.42-4.81zM9.75 15.02V8.98L15 12l-5.25 3.02z"/>
+              </svg>
+            </div>
+            <h3 class="schedule-service-name">IBADAH ONLINE</h3>
+            <p class="schedule-desc">Bagi anak-anak dan keluarga di manapun berada, saksikan ibadah interaktif di YouTube resmi kami.</p>
+            <a href="https://youtube.com/@joelkidsministry?si=W3_oBHQ2Awij22_t" target="_blank" rel="noopener noreferrer" class="btn-yt-card">
+              <span>Tonton di YouTube</span>
+              <span class="arrow-right">→</span>
+            </a>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ── 7. Gods Heroes (Kategori & Kelas Anak dengan Banner Masing-Masing) ── -->
+      <section id="kelas" class="page-section">
+        <div class="section-header">
+          <span class="section-tag">// 04 • GODS HEROES CLASSES</span>
+          <h2 class="section-title">GODS HEROES CLASSES</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="heroes-grid">
+          
+          <!-- Class 1: Love Batita -->
+          <div class="hero-class-card" id="class-batita">
+            <div class="class-banner-thumb-wrap" onclick="openBannerModal('asset/Gods_heroes/love_batita.png', 'asset/Gods_heroes/love_batita.svg', 'Love Heroes Batita (1-3 Tahun)')" title="Klik untuk memperbesar banner">
+              <img src="asset/Gods_heroes/love_batita.png" alt="Banner Love Batita" class="class-banner-thumb" onerror="this.onerror=null; this.src='asset/Gods_heroes/love_batita.svg';">
+              <span class="banner-expand-btn">🔍 Lihat Banner</span>
+            </div>
+            <div class="class-avatar-badge avatar-batita">👶</div>
+            <span class="class-age">Usia 1 - 3 Tahun</span>
+            <h3 class="class-title">LOVE BATITA</h3>
+            <p class="class-desc">Ruang aman penuh kasih, alunan lagu pujian tenang, dan doa berkat untuk buah hati sejak dini.</p>
+          </div>
+
+          <!-- Class 2: Love Balita -->
+          <div class="hero-class-card" id="class-balita">
+            <div class="class-banner-thumb-wrap" onclick="openBannerModal('asset/Gods_heroes/love_balita.png', 'asset/Gods_heroes/love_balita.svg', 'Love Heroes Balita (4-5 Tahun)')" title="Klik untuk memperbesar banner">
+              <img src="asset/Gods_heroes/love_balita.png" alt="Banner Love Balita" class="class-banner-thumb" onerror="this.onerror=null; this.src='asset/Gods_heroes/love_balita.svg';">
+              <span class="banner-expand-btn">🔍 Lihat Banner</span>
+            </div>
+            <div class="class-avatar-badge avatar-balita">🧸</div>
+            <span class="class-age">Usia 4 - 5 Tahun</span>
+            <h3 class="class-title">LOVE BALITA</h3>
+            <p class="class-desc">Aktivitas motorik kreatif, cerita tokoh Alkitab bergambar, dan bernyanyi gembira bersama teman.</p>
+          </div>
+
+          <!-- Class 3: Faith -->
+          <div class="hero-class-card" id="class-faith">
+            <div class="class-banner-thumb-wrap" onclick="openBannerModal('asset/Gods_heroes/faith.png', 'asset/Gods_heroes/faith.svg', 'Faith Heroes (Kelas 1 SD)')" title="Klik untuk memperbesar banner">
+              <img src="asset/Gods_heroes/faith.png" alt="Banner Faith" class="class-banner-thumb" onerror="this.onerror=null; this.src='asset/Gods_heroes/faith.svg';">
+              <span class="banner-expand-btn">🔍 Lihat Banner</span>
+            </div>
+            <div class="class-avatar-badge avatar-faith">🛡️</div>
+            <span class="class-age">Kelas 1 SD</span>
+            <h3 class="class-title">FAITH</h3>
+            <p class="class-desc">Membangun perisai iman, belajar menghafal firman Tuhan, dan mengenal Yesus sebagai Sahabat terbaik.</p>
+          </div>
+
+          <!-- Class 4: Hope -->
+          <div class="hero-class-card" id="class-hope">
+            <div class="class-banner-thumb-wrap" onclick="openBannerModal('asset/Gods_heroes/hope.png', 'asset/Gods_heroes/hope.svg', 'Hope Heroes (Kelas 2-3 SD)')" title="Klik untuk memperbesar banner">
+              <img src="asset/Gods_heroes/hope.png" alt="Banner Hope" class="class-banner-thumb" onerror="this.onerror=null; this.src='asset/Gods_heroes/hope.svg';">
+              <span class="banner-expand-btn">🔍 Lihat Banner</span>
+            </div>
+            <div class="class-avatar-badge avatar-hope">⚓</div>
+            <span class="class-age">Kelas 2 - 3 SD</span>
+            <h3 class="class-title">HOPE</h3>
+            <p class="class-desc">Pengharapan yang tak pernah goyah, pembentukan integritas, dan belajar melayani sesama dengan kasih.</p>
+          </div>
+
+          <!-- Class 5: Prayer -->
+          <div class="hero-class-card" id="class-prayer">
+            <div class="class-banner-thumb-wrap" onclick="openBannerModal('asset/Gods_heroes/prayer.png', 'asset/Gods_heroes/prayer.svg', 'Prayer Heroes (Kelas 4-5 SD)')" title="Klik untuk memperbesar banner">
+              <img src="asset/Gods_heroes/prayer.png" alt="Banner Prayer Heroes" class="class-banner-thumb" onerror="this.onerror=null; this.src='asset/Gods_heroes/prayer.svg';">
+              <span class="banner-expand-btn">🔍 Lihat Banner</span>
+            </div>
+            <div class="class-avatar-badge avatar-prayer">🕊️</div>
+            <span class="class-age">Kelas 4 - 5 SD</span>
+            <h3 class="class-title">PRAYER</h3>
+            <p class="class-desc">Prajurit doa cilik yang dipenuhi Roh Kudus, memahami Firman lebih dalam, dan berani bersaksi bagi kemuliaan Tuhan.</p>
+          </div>
+
+          <!-- Class 6: Gods Heroes Champions -->
+          <div class="hero-class-card card-featured-heroes" id="class-heroes">
+            <div class="class-banner-thumb-wrap" onclick="openBannerModal('asset/Gods_heroes/gods_heroes.png', 'asset/Gods_heroes/gods_heroes.svg', 'Gods Heroes (Kelas 6 SD)')" title="Klik untuk memperbesar banner">
+              <img src="asset/Gods_heroes/gods_heroes.png" alt="Banner Gods Heroes" class="class-banner-thumb" onerror="this.onerror=null; this.src='asset/Gods_heroes/gods_heroes.svg';">
+              <span class="banner-expand-btn">🔍 Lihat Banner</span>
+            </div>
+            <div class="class-avatar-badge avatar-heroes">👑</div>
+            <span class="class-age">Kelas 6 SD</span>
+            <h3 class="class-title">GODS HEROES</h3>
+            <p class="class-desc">Generasi emas pemenang yang hidup kudus, dipimpin Roh Kudus, dan menjadi pahlawan iman sebelum melangkah ke jenjang remaja.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── 8. Media Sosial & Connect ─────────────────────────── -->
+      <section id="social" class="page-section">
+        <div class="section-header">
+          <span class="section-tag">// 05 • MEDIA SOSIAL RESMI</span>
+          <h2 class="section-title">MEDIA SOSIAL RESMI</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="social-cards-grid">
+          
+          <!-- YouTube -->
+          <a href="https://www.youtube.com/@joelkidsministry/featured" target="_blank" rel="noopener noreferrer" class="social-hub-card card-yt">
+            <div class="social-hub-icon-wrap">
+              <svg viewBox="0 0 24 24" class="social-svg-icon" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </div>
+            <div class="social-hub-meta">
+              <span class="social-platform">YouTube</span>
+              <span class="social-handle">Joel Kids Ministry</span>
+            </div>
+            <span class="social-arrow">↗</span>
+          </a>
+
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/joelkidsministry/" target="_blank" rel="noopener noreferrer" class="social-hub-card card-ig">
+            <div class="social-hub-icon-wrap">
+              <svg viewBox="0 0 24 24" class="social-svg-icon" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </div>
+            <div class="social-hub-meta">
+              <span class="social-platform">Instagram</span>
+              <span class="social-handle">@joelkidsministry</span>
+            </div>
+            <span class="social-arrow">↗</span>
+          </a>
+
+          <!-- Spotify -->
+          <a href="https://open.spotify.com/artist/2fkKqUPPuAPJYJk21M85d6?si=x3whIEuZTWGQHoNNCsNRqw" target="_blank" rel="noopener noreferrer" class="social-hub-card card-spotify">
+            <div class="social-hub-icon-wrap">
+              <svg viewBox="0 0 24 24" class="social-svg-icon" fill="currentColor">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.12-.779-.18-.899-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.301 1.021zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.38-1.32 9.78-.66 13.44 1.56.42.24.6.84.301 1.261zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.332-1.02 15.721 1.62.539.3.719 1.02.419 1.56-.3.54-1.02.72-1.56.42z"/>
+              </svg>
+            </div>
+            <div class="social-hub-meta">
+              <span class="social-platform">Spotify</span>
+              <span class="social-handle">Joel Kids</span>
+            </div>
+            <span class="social-arrow">↗</span>
+          </a>
+
+          <!-- TikTok -->
+          <a href="https://www.tiktok.com/@joelkidsministry" target="_blank" rel="noopener noreferrer" class="social-hub-card card-tiktok">
+            <div class="social-hub-icon-wrap">
+              <svg viewBox="0 0 24 24" class="social-svg-icon" fill="currentColor">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .56.04.82.12V9.32a6.33 6.33 0 0 0-1-.08 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.33V9.05a8.3 8.3 0 0 0 4.97 1.63V7.24a4.85 4.85 0 0 1-1.01-.55z"/>
+              </svg>
+            </div>
+            <div class="social-hub-meta">
+              <span class="social-platform">TikTok</span>
+              <span class="social-handle">@joelkidsministry</span>
+            </div>
+            <span class="social-arrow">↗</span>
+          </a>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ── Floating Mini Audio Player (Spotify Style) ── -->
+  <aside id="mini-audio-player" class="mini-audio-player" aria-hidden="true">
+    <div class="mini-player-container">
+      <div class="mini-player-track-info">
+        <img id="mini-player-thumb" src="asset/albums/faithful_god.jpg" alt="Now Playing Album" class="mini-player-thumb">
+        <div class="mini-player-text">
+          <span id="mini-player-title" class="mini-player-title">Pilih Lagu</span>
+          <span id="mini-player-album" class="mini-player-album">Joel Kids</span>
+        </div>
+      </div>
+
+      <div class="mini-player-controls">
+        <button id="mini-player-play-btn" class="mini-player-btn-circle" aria-label="Play or Pause">
+          <svg class="mini-play-svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg class="mini-pause-svg" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </button>
+        <div class="mini-player-timeline">
+          <div id="mini-player-progress" class="mini-player-progress-bar"></div>
+        </div>
+        <span class="mini-player-tag">30s PREVIEW</span>
+      </div>
+
+      <div class="mini-player-actions">
+        <a id="mini-player-spotify-link" href="https://open.spotify.com/artist/2fkKqUPPuAPJYJk21M85d6" target="_blank" rel="noopener noreferrer" class="mini-player-spotify-btn">
+          <svg viewBox="0 0 24 24" class="mini-spotify-svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.12-.779-.18-.899-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.301 1.021zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.38-1.32 9.78-.66 13.44 1.56.42.24.6.84.301 1.261zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.332-1.02 15.721 1.62.539.3.719 1.02.419 1.56-.3.54-1.02.72-1.56.42z"/></svg>
+          <span>Buka di Spotify</span>
+        </a>
+        <button id="mini-player-close-btn" class="mini-player-close" aria-label="Tutup Player">&times;</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── 9. Modern Church Footer (GMS Multi-column Style) ──────── -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      
+      <div class="footer-brand-col">
+        <div class="footer-brand">
+          <img src="asset/joelkids_logo.png" alt="Joel Kids Logo" class="footer-brand-logo" onerror="this.src='asset/icon.svg'">
+          <span class="footer-brand-name joelkids-rainbow-hook" aria-label="Joel Kids">
+            <span class="rainbow-letter" data-color="#ff3355">J</span><span class="rainbow-letter" data-color="#ff7a00">o</span><span class="rainbow-letter" data-color="#ffd200">e</span><span class="rainbow-letter" data-color="#00e676">l</span><span class="rainbow-space">&nbsp;</span><span class="rainbow-letter" data-color="#00d4c8">K</span><span class="rainbow-letter" data-color="#00a2ff">i</span><span class="rainbow-letter" data-color="#9d4edd">d</span><span class="rainbow-letter" data-color="#ff3399">s</span>
+          </span>
+        </div>
+        <p class="footer-tagline">
+          Generasi Emas Kristus yang berakar dalam firman, bertumbuh dalam kasih, dan berbuah lebat bagi kemuliaan Bapa.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Navigasi Cepat</h4>
+        <ul class="footer-nav-list">
+          <li><a href="#about">Tentang Kita</a></li>
+          <li><a href="#jadwal">Jadwal Ibadah</a></li>
+          <li><a href="#banner-heroes">Banner Gods Heroes</a></li>
+          <li><a href="#kelas">Kelas Gods Heroes</a></li>
+          <li><a href="#social">Media Sosial</a></li>
+          <li><a href="album-lagu.html">Album Lagu Anak</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-affiliation-col">
+        <h4 class="footer-heading">Gereja Pengayom</h4>
+        <p class="affiliation-text">Pelayanan ini berada dibawah naungan resmi :</p>
+        <div class="church-badge">
+          <img src="asset/hte_logo.png" alt="Logo Gereja HTE" class="church-logo" onerror="this.style.display='none'">
+          <span class="church-name">GEREJA HTE</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom-bar">
+      <div class="bottom-container">
+        <p class="copyright-text">
+          &copy; 2026 Joel Kids Ministry. All Rights Reserved.
+        </p>
+        <button id="back-to-top" class="back-to-top-btn" aria-label="Kembali ke atas">
+          <span>Ke Atas</span>
+          <span class="top-arrow">↑</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── 10. Interactive Banner Lightbox Modal ─────────────────── -->
+  <div id="banner-modal" class="banner-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="banner-modal-backdrop" onclick="closeBannerModal()"></div>
+    <div class="banner-modal-dialog">
+      <button class="banner-modal-close" onclick="closeBannerModal()" aria-label="Tutup Banner">&times;</button>
+      <div class="modal-header-info">
+        <span class="modal-tag">BANNER RESMI</span>
+        <h3 id="modal-banner-title" class="modal-banner-title">Class Banner Preview</h3>
+      </div>
+      <div class="modal-banner-img-wrap">
+        <img id="modal-banner-img" src="" alt="Banner Preview" class="modal-banner-img">
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" onclick="closeBannerModal()">Tutup Tampilan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 11. Cinematic Video Theater Modal ──────────────────────── -->
+  <div id="video-modal" class="video-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Pemutar Video Joel Kids">
+    <div class="video-modal-backdrop" onclick="closeVideoModal()"></div>
+    <div class="video-modal-dialog">
+      <div class="video-modal-header">
+        <div class="video-modal-title-group">
+          <span id="video-modal-category" class="video-modal-category">// TAYANGAN JOEL KIDS</span>
+          <h3 id="video-modal-title" class="video-modal-title">Judul Video</h3>
+        </div>
+        <button class="video-modal-close" onclick="closeVideoModal()" aria-label="Tutup Video">&times;</button>
+      </div>
+      <div class="video-modal-body">
+        <video id="theater-video-player" controls preload="metadata" playsinline></video>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
